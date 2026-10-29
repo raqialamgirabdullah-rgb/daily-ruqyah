@@ -1,0 +1,16 @@
+{
+  "name": "Daily Ruqyah — ডেইলি রুকিয়া",
+  "short_name": "ডেইলি রুকিয়া",
+  "description": "কুরআনের আয়াত খোঁজা, বিষয়ভিত্তিক ও রোগ অনুযায়ী আয়াত, অডিও ও কপি — একটি অ্যাপে",
+  "lang": "bn",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0f5132",
+  "theme_color": "#0f5132",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
