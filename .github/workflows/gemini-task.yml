@@ -1,0 +1,38 @@
+# মন্তব্যে "/gemini <কাজ>" লিখলে Gemini কাজ করে নতুন ব্রাঞ্চে PR খোলে। শুধু রিপো-মালিকের মন্তব্যে চলে।
+# পরীক্ষামূলক: প্রয়োজন রিপো Secret GEMINI_API_KEY।
+name: Gemini Task
+on:
+  issue_comment:
+    types: [created]
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+jobs:
+  gemini:
+    if: github.event.comment.author_association == 'OWNER' && startsWith(github.event.comment.body, '/gemini')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Gemini
+        uses: google-github-actions/run-gemini-cli@v0.1.22
+        with:
+          gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
+          prompt: |
+            তুমি এই রিপোর কোড-সহকারী। নিচের কাজটি করো। ওয়ার্কিং ডিরেক্টরির ফাইল সরাসরি বদলাও, কমিট বা পুশ করো না।
+            শুধু কাজে যা লাগে তা বদলাও, অন্য কিছু ছোঁবে না।
+            কাজ: ${{ github.event.comment.body }}
+      - name: Open PR if files changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+          N: ${{ github.event.issue.number }}
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            gh issue comment "$N" --body "Gemini কোনো ফাইল বদলায়নি।"; exit 0
+          fi
+          B="gemini/issue-$N-$GITHUB_RUN_ID"
+          git config user.name "gemini-bot"; git config user.email "gemini-bot@users.noreply.github.com"
+          git checkout -b "$B"; git add -A; git commit -q -m "Gemini: issue #$N"
+          git push origin "$B"
+          gh pr create --base main --head "$B" --title "Gemini: issue #$N" --body "Fixes #$N (Gemini দিয়ে তৈরি)"
+          gh issue comment "$N" --body "Gemini-র PR তৈরি হয়েছে।"
