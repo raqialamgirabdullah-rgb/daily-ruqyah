@@ -1,115 +1,54 @@
-##### TERMS
- মুসলিম বাংলা কুরআন হাদীস নামাজের সময় নামাজ শিক্ষা মাসায়েল দু'আ প্রবন্ধ বিবাহ অন্যান্য ডোনেশন ডাউনলোড শর্তাবলি السَّلَامُ عَلَيكُمْ وَرَحمَةُ اللّٰهِ وَبَرَكَاتُه মুহতারাম, মুসলিম বাংলা প্লাটফর্মের প্রতিটি খিদমাত উম্মাহর সর্বস্তরের মানুষের জন্য উন্মুক্ত করে দেওয়া হয়েছে। যাতে অনলাইন ও অফলাইন—উভয় মাধ্যমেই মানুষ দ্বীনি ইলম সহজে আহরণ করতে পারে। উম্মুক্ত রাখার উদ্দেশ্য হলো, নবী করীম ﷺ বর্ণিত ইলম গোপন করার ভয়াবহতা থেকে বাঁচা—যেখানে হুঁশিয়ারি দিয়ে বলা হয়েছে কিয়ামতের দিনে ইলম গোপনকারীর মুখে আগুনের লাগাম পরানো হবে। তবে এতদসত্ত্বেও, যদি কেউ মুসলিম বাংলার প্লাটফর্মের নিকট থেকে কোনো ধরণের ডাটা চেয়ে আবেদন করেন—তা ব্যক্তিগত বা সার্বজনীন প্রয়োজনে হোক—তাহলে মুসলিম বাংলা অত্যন্ত বিনয়ের সাথে বলতে চাইবে, এসব ডাটা মুসলিম বাংলা প্লাটফর্মে উম্মুক্ত আছে। মুসলিম বাংলা এটাকেই যথেষ্ট মনে করে। সুতরাং, কোনো ডাটা আলাদা করে না পাওয়ার কারণে মনক্ষুণ্ণ না হয়ে, অনুগ্রহ করে মুসলিম বাংলার উন্মুক্ত প্রতিটি সেকশন থেকে যথাসম্ভব উপকার ও ফায়দা অর্জনের চেষ্টা চালিয়ে যাওয়া কাম্য। আল্লাহ তাআলা আমাদের সকলকে খালেস নিয়তে দ্বীনের খিদমাত আঞ্জাম দেয়ার তাওফিক দান করুন। আমীন। সাদাকায়ে জারিয়াহ মুসলিম বাংলার সাথী হোন আপনার সাদাকাহর মাধ্যমে মুসলিম বাংলার অগ্রযাত্রার সাথী হোন। ডোনেশন করুন মুসলিম বাংলা বাংলাদেশের সকল শহর, জেলা, উপজেলা এমনকি ইন্টারনেট বিহীন প্রত্যন্ত গ্রামে পর্যন্ত ব্যবহার উপযোগী। বাংলাদেশের বাইরে কলকাতা, দুবাই, সৌদি আরব, কাতার, কুয়
-##### SITEMAP index
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://muslimbangla.com</loc>
-    <lastmod>2026-10-15T12:33:55.117Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://muslimbangla.com/today</loc>
-    <lastmod>2026-10-15T12:33:55.117Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://muslimbangla.com/quran</loc>
-    <lastmod>2026-10-15T12:33:55.117Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://muslimbangla.com/hadith</loc>
-    <lastmod>2026-10-15T12:33:55.117Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://muslimbangla.com/dua</loc>
-    <lastmod>2026-10-15T12:33:55.117Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://muslimbangla.com/prayer-times</loc>
-    <lastmod>2026-10-15T12:33:55.117Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://muslimbangla.com/lectures</loc>
-    <lastmod>2026-10-15T12:33:55.117Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://muslimbangla.com/article</loc>
-    <lastmod>2026-10-15T12:33:55.117Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priori
-##### /hadith-books links
-href="/hadith-book-description/1/সহীহ বুখারী"
-href="/hadith-book-description/10/মুসনাদে আবু হানীফা রহঃ"
-href="/hadith-book-description/1047/আত্-তারগীব ওয়াত্-তারহীব"
-href="/hadith-book-description/1048/সহীফায়ে হাম্মাম ইবনে মুনাব্বিহ"
-href="/hadith-book-description/1050/হাদীসে কুদসী"
-href="/hadith-book-description/1051/মা&#x27;আরিফুল হাদীস"
-href="/hadith-book-description/11/আল মুওয়াত্তা-ইমাম মুহাম্মাদ রহঃ"
-href="/hadith-book-description/12/আল-আদাবুল মুফরাদ"
-href="/hadith-book-description/13/মিশকাতুল মাসাবীহ"
-href="/hadith-book-description/14/ফিকহুস সুনান"
-href="/hadith-book-description/15/আখলাকুন্নবী (ﷺ)"
-href="/hadith-book-description/16/রিয়াযুস সালিহীন"
-href="/hadith-book-description/17/মুসনাদে আহমদ- ইমাম আহমদ রহঃ"
-href="/hadith-book-description/2/সহীহ মুসলিম"
-href="/hadith-book-description/3/জামে&#x27; তিরমিযী"
-href="/hadith-book-description/4/সুনানে আবু দাউদ"
-href="/hadith-book-description/5/সুনানে নাসায়ী"
-href="/hadith-book-description/6/সুনানে ইবনে মাজা"
-href="/hadith-book-description/7/মুওয়াত্তা মালিক"
-href="/hadith-book-description/8/শামাঈলে তিরমিযী"
-href="/hadith-book-description/9/ত্বহাবী শরীফ"
-href="/hadith-book/1/chapters"
-href="/hadith-book/10/chapters"
-href="/hadith-book/1047/chapters"
-href="/hadith-book/1048/chapters"
-href="/hadith-book/1050/chapters"
-href="/hadith-book/1051/chapters"
-href="/hadith-book/11/chapters"
-href="/hadith-book/12/chapters"
-href="/hadith-book/13/chapters"
-href="/hadith-book/14/chapters"
-href="/hadith-book/15/chapters"
-href="/hadith-book/16/chapters"
-href="/hadith-book/17/chapters"
-href="/hadith-book/18/chapters"
-href="/hadith-book/2/chapters"
-href="/hadith-book/20/chapters"
-href="/hadith-book/21/chapters"
-href="/hadith-book/23/chapters"
-href="/hadith-book/24/chapters"
-href="/hadith-book/25/chapters"
-href="/hadith-book/26/chapters"
-href="/hadith-book/27/chapters"
-href="/hadith-book/28/chapters"
-href="/hadith-book/29/chapters"
-href="/hadith-book/3/chapters"
-href="/hadith-book/30/chapters"
-href="/hadith-book/31/chapters"
-href="/hadith-book/32/chapters"
-href="/hadith-book/33/chapters"
-href="/hadith-book/34/chapters"
-href="/hadith-book/4/chapters"
-href="/hadith-book/5/chapters"
-href="/hadith-book/6/chapters"
-href="/hadith-book/7/chapters"
-href="/hadith-book/8/chapters"
-href="/hadith-book/9/chapters"
+##### ALL BOOKS (text)
+ হাদীসের কিতাব সমূহ | মুসলিম বাংলা মুসলিম বাংলা কুরআন হাদীস নামাজের সময় নামাজ শিক্ষা মাসায়েল দু'আ প্রবন্ধ বিবাহ অন্যান্য ডোনেশন ডাউনলোড হাদীসের কিতাব সমূহ মোট কিতাব - ৩৬ টি বাংলা কিতাবভিত্তিক বিষয়ভিত্তিক রাবী বর্ণিত ১ আল জামিউস সহীহ- ইমাম বুখারী রহঃ الجامع الصحيح للبخاري ৮৩ অধ্যায় ৭০৫৩ হাদীস ২ আল মুসনাদুস সহীহ- ইমাম মুসলিম রহঃ المسند الصحيح لمسلم ৫৮ অধ্যায় ৭২৯২ হাদীস ৩ আল জামিউল কাবীর- ইমাম তিরমিযী রহঃ الجامع الكبير للترمذي ৪৮ অধ্যায় ৩৯৫৬ হাদীস ৪ কিতাবুস সুনান - ইমাম আবু দাউদ রহঃ كتاب السنن للإمام أبي داود ৩৬ অধ্যায় ৫১৮৪ হাদীস ৫ কিতাবুস সুনান (আলমুজতাবা) - ইমাম নাসায়ী রহঃ المجتبى من السنن للنسائي ৫১ অধ্যায় ৫৭৫৮ হাদীস ৬ কিতাবুস সুনান- ইমাম ইবনে মাজা রহঃ كتاب السنن للإمام ابن ماجة ৩৬ অধ্যায় ৪৩৪১ হাদীস ৭ আল মুওয়াত্তা - ইমাম মালিক রহঃ كتاب الموطأ للإمام مالك ৬১ অধ্যায় ১৮৮৯ হাদীস ৮ আশ-শামাঈলুল মুহাম্মাদিয়্যাহ- ইমাম তিরমিযী রহঃ الشمائل المحمدية للإمام الترمذي ২ অধ্যায় ৪১৫ হাদীস ৯ শরহু মাআ’নিল আছার- ইমাম ত্বহাবী রহঃ شرح معاني الآثار المختلفة المروية عن رسول الله صلى الله عليه وسلم في الأحكام ২৩ অধ্যায় ৭৫১০ হাদীস ১০ মুসনাদে ইমাম আযম আবু হানীফা রহঃ مسند الامام الأعظم أبي حنيفة رحـ برواية الحصكفي ২৮ অধ্যায় ৫২৩ হাদীস ১১ আল মুওয়াত্তা-ইমাম মুহাম্মাদ রহঃ موطأ الإمام مالك برواية الإمام محمد بن الحسن الشيباني ১৮ অধ্যায় ১০০৭ হাদীস ১২ আল-আদাবুল মুফরাদ- ইমাম বুখারী রহঃ الأدب المفرد للبخاري ১ অধ্যায় ১৩৩০ হাদীস ১৩ মিশকাতুল মাসাবীহ (মিশকাত শরীফ) مشكاة المصابيح للتبريزي ৩১ অধ্যায় ৬২৯৫ হাদীস ১৪ ফিকহুস সুনান ওয়াল আসার فقه السنن و الآثار (أدلة السادات الاحناف) ৪৩ অধ্যায় ২৭১০ হাদীস ১৫ আখলাকুন্নবী (ﷺ) أخلاق النبي وآدابه لأبي الشيخ الأصبهاني ১ অধ্যায় ৮৯৫ হাদীস ১৬ রিয়াযুস সালিহীন-ইমাম নববী রহঃ رياض الصالحين من كلام سيد المرسلين ১৭ অধ্যায় ১৯০৬ হাদীস ১৭ মুসনাদে আহমদ- ইমাম আহমদ রহঃ (আল-ফাতহুর রব্বানী) الفتح الرباني لترتيب مسند الإمام أحمد بن حنبل الشيباني ৬৬ অধ্যায় ২৭৬৪৭ হাদীস ১৮ মা'আরিফুল হাদীস معارف الحديث ১৬ অধ্যায় ২০৯৮ হাদীস ১৯ সহীফায়ে হাম্মাম ইবনে মুনাব্বিহ صحيفة همام بن منبه ১৩৮ হাদীস ২০ আত্-তারগীব ওয়াত্-তারহীব- ইমাম মুনযিরী রহঃ الترغيب والترهيب للمنذري ২৬ অধ্যায় ৫৭৬৬ হাদীস ২১ হাদীসে কুদসী من صحاح الأحاديث القدسية ১০০ হাদীস ২২ আল জামিউস সহীহ- ইমাম বুখারী রহঃ (উর্দু) الجامع الصحيح للبخاري ৮০ অধ্যায় ৭২৮২ হাদীস ২৩ আল মুসনাদুস সহীহ- ইমাম মুসলিম রহঃ (উর্দু) المسند الصحيح لمسلم ৫৭ অধ্যায় ৭৫৭০ হাদীস ২৪ আল জামিউল কাবীর- ইমাম তিরমিযী রহঃ (উর্দু) الجامع الكبير للترمذي ৪৬ অধ্যায় ৩৯৭৭ হাদীস ২৫ কিতাবুস সুনান - ইমাম আবু দাউদ রহঃ (উর্দু) كتاب السنن للإمام أبي داود ৩৮ অধ্যায় ৫২৯৫ হাদীস ২৬ কিতাবুস সুনান (আলমুজতাবা) - ইমাম নাসায়ী রহঃ (উর্দু) المجتبى من السنن للنسائي ৫১ অধ্যায় ৫৭৭২ হাদীস ২৭ কিতাবুস সুনান - ইমাম ইবনে মাজা' রহঃ (উর্দু) كتاب السنن للإما�
+##### chapters page of book 16
+href="/hadith-book/16/chapter/390"
+href="/hadith-book/16/chapter/572"
+href="/hadith-book/16/chapter/573"
+href="/hadith-book/16/chapter/574"
+href="/hadith-book/16/chapter/575"
+href="/hadith-book/16/chapter/576"
+href="/hadith-book/16/chapter/577"
+href="/hadith-book/16/chapter/578"
+href="/hadith-book/16/chapter/579"
 href="/hadith-books"
-href="/hadith-books?menu=books"
-href="/hadith-books?menu=topics"
 --- text
- হাদীসের কিতাব সমূহ | মুসলিম বাংলা মুসলিম বাংলা কুরআন হাদীস নামাজের সময় নামাজ শিক্ষা মাসায়েল দু'আ প্রবন্ধ বিবাহ অন্যান্য ডোনেশন ডাউনলোড হাদীসের কিতাব সমূহ মোট কিতাব - ৩৬ টি বাংলা কিতাবভিত্তিক বিষয়ভিত্তিক রাবী বর্ণিত ১ আল জামিউস সহীহ- ইমাম বুখারী রহঃ الجامع الصحيح للبخاري ৮৩ অধ্যায় ৭০৫৩ হাদীস ২ আল মুসনাদুস সহীহ- ইমাম মুসলিম রহঃ المسند الصحيح لمسلم ৫৮ অধ্যায় ৭২৯২ হাদীস ৩ আল জামিউল কাবীর- ইমাম তিরমিযী রহঃ الجامع الكبير للترمذي ৪৮ অধ্যায় ৩৯৫৬ হাদীস ৪ কিতাবুস সুনান - ইমাম আবু দাউদ রহঃ كتاب السنن للإمام أبي داود ৩৬ অধ্যায় ৫১৮৪ হাদীস ৫ কিতাবুস সুনান (আলমুজতাবা) - ইমাম নাসায়ী রহঃ المجتبى من السنن للنسائي ৫১ �
+ রিয়াযুস সালিহীন | মুসলিম বাংলা মুসলিম বাংলা কুরআন হাদীস নামাজের সময় নামাজ শিক্ষা মাসায়েল দু'আ প্রবন্ধ বিবাহ অন্যান্য ডোনেশন ডাউনলোড রিয়াযুস সালিহীন - এর অধ্যায়সমূহ رياض الصالحين من كلام سيد المرسلين ১৭ টি অধ্যায়, ১৯০৬ টি হাদীস বাংলা ভূমিকা অধ্যায় مقدمة الامام النووي মোট হাদীস - ৬৭৯ টি • হাদীসের ব্যাপ্তি: ১ - ৬৭৯ ২. বিবিধ আদব - শিষ্টাচারের অধ্যায় كتاب الأدب মোট হাদীস - ৪৭ টি • হাদীসের ব্যাপ্তি: ৬৮০ - ৭২৬ ৩. আহার-পানীয় গ্রহণের আদব كتاب أدب الطعام মোট হাদীস - ৫১ টি • হাদীসের ব্যাপ্তি: �
+##### chapter link chosen: /hadith-book/16/chapter/572
+--- links
+href="/hadith-books"
+href="/hadith/58798?id=explanation"
+href="/hadith/58798?id=note"
+href="/hadith/58799?id=explanation"
+href="/hadith/58799?id=note"
+href="/hadith/58800?id=explanation"
+href="/hadith/58800?id=note"
+href="/hadith/58801?id=explanation"
+href="/hadith/58801?id=note"
+href="/hadith/58802?id=explanation"
+href="/hadith/58802?id=note"
+href="/hadith/58803?id=explanation"
+href="/hadith/58803?id=note"
+href="/hadith/58804?id=explanation"
+href="/hadith/58804?id=note"
+--- has __NEXT_DATA__: 0  self.__next_f: 1
+--- text
+ রিয়াযুস সালিহীন | মুসলিম বাংলা মুসলিম বাংলা কুরআন হাদীস নামাজের সময় নামাজ শিক্ষা মাসায়েল দু'আ প্রবন্ধ বিবাহ অন্যান্য ডোনেশন ডাউনলোড রিয়াযুস সালিহীন-ইমাম নববী রহঃ رياض الصالحين من كلام سيد المرسلين ২. বিবিধ আদব - শিষ্টাচারের অধ্যায় - এর পরিচ্ছেদসমূহ মোট হাদীস ৪৭ টি বাংলা হাদীসের কিতাব অধ্যায় ১ ২ ৩ আরবী দেখুন হাদীস নং: ৬৮০ বিবিধ আদব - শিষ্টাচারের অধ্যায় পরিচ্ছেদঃ দ্বিতীয় ভাগ : আদব ও শিষ্টাচার পরিচ্ছেদ: ১ লজ্জাশীলতা, লজ্জাশীলতার ফযীলত এবং এ গুণে গুণান্বিত হওয়ার প্রতি উৎসাহদান اَلْأَدب (আদব) অর্থ প্রশংসনীয় কর্মপন্থা। অর্থাৎ বিশ্বাস, কথা ও কাজে যে পদ্ধতি, রীতিনীতি ও ভাবভঙ্গি শরী'আতে প্রশংসনীয়, তাকে আদব বলা হয়। কথাটি এভাবেও বলা যায় যে, আকীদা-বিশ্বাস, কথা ও কাজে মুসলিম ব্যক্তির যে পন্থা অনুসরণ করা উচিত তাকে আদব বলে। এটা ওয়াজিবও হতে পারে, মুস্তাহাবও হতে পারে। করণীয় ক্ষেত্রেও হতে পারে, বর্জনীয় ক্ষেত্রেও হতে পারে। আদবের সম্পর্ক রয়েছে আল্লাহ তা'আলার সঙ্গে, তাঁর কিতাবের সঙ্গে, তাঁর রাসূলের সঙ্গে, ব্যক্তির নিজের সঙ্গে এবং সমাজের সঙ্গে। এটা অতি ব্যাপক। জীবনের সকল ক্ষেত্র ও সকল কাজেই এটা প্রযোজ্য। আদব আমাদের দীনী শিক্ষার এক অবিচ্ছেদ্য অঙ্গ। এর দ্বারা মানবজীবনের প্রতিটি ক্ষেত্রে মুসলিম ব্যক্তির স্বাতন্ত্র্য প্রকাশ পায়। কেননা তার খাওয়া, পান করা, পোশাক পরা, অভিভাদন জানানো, অনুমতি চাওয়া, কথাবার্তা, হাসি-তামাশা, অভিনন্দন জানানো, শোক জ্ঞাপন, হাঁচি দেওয়া, হাই তোলা, ওঠাবসা, চলাফেরা, ঘুমানো, স্ত্রীর সঙ্গে আচরণ, আত্মীয়-স্বজন ও বন্ধু-বান্ধবের সঙ্গTraceback (most recent call last):
+  File "<string>", line 5, in <module>
+    t=re.sub(r'<[^>]+>',' ',t); print(html.unescape(re.sub(r'\s+',' ',t)))
+                                ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+BrokenPipeError: [Errno 32] Broken pipe
+
+--- raw hadith html sample
+<meta name="keywords" content="মুসলিম,বাংলা,অ্যাপ,ইসলাম,কুরআন,হাদীস,নামাজের সময়,দোয়া,মাস&#x27;আলা,বয়ান,কিতাব,প্রবন্ধ,ব্লগ,দ্বীনি ক্লাস,হজ,রমজান,ইফতার,সেহরি,কিবলা,হিজরি তারিখ,বিবাহ,জাকাত,ঈমান,নামাজের সময় অ্যাপ,নামাজের সময় অ্যাপ ডাউনলোড,নামাজের সময় অ্যাপ্লিকেশন,সুন্নাহ,যাকাত,যাকাত ক্যালকুলেটর,ইসলামিক নাম,মাসআলা জিজ্ঞাসা,ডোনেশন,দ্বীনি প্রশ্ন,দ্বীনি প্রশ্ন উত্তর,দ্বীনি প্রশ্ন উত্তর অ্যাপ,দ্বীনি প্রশ্ন উত্তর অ্যাপ ডাউনলোড,বাংলা কুরআন,বাংলা হাদীস,ডিজিটাল স্মার্ট তাসবিহ,কুরআন শিক্ষা,নামাজ শিক্ষা,মসজিদ ফাইন্ডার,রোজা,আল্লাহ্‌ র নাম,লাইভ [বাইতুল্লাহ ও মাসজিদে নববী],পুরো বছরের ক্যালেন্ডার,গুরুত্বপূর্ণ আমলি নোটিফিকেশন,তথ্যবহুল উইজেট,বাংলা ইসলামিক অ্যাপ,বাংলা ইসলামিক অ্যাপ্লিকেশন,বাংলা ইসলামিক অ্যাপস,বাংলা ইসলামিক অ্যাপস ডাউনলোড,বাংলা ইসলামিক অ্যাপ ডাউনলোড,বাংলা ইসলামিক অ্যাপ্লিকেশন ডাউনলোড,মুসলিম বাংলা অ্যাপ,মুসলিম বাংলা অ্যাপ ডাউনলোড,মুসলিম বাংলা অ্যাপ্লিকেশন,মুসলিম বাংলা অ্যাপ্লিকেশন ডাউনলোড,মুসলিম বাংলা অ্যাপস,মুসলিম বাংলা অ্যাপস ডাউনলোড,মুসলিম বাংলা ফাউন্ডেশন,মুসলিম বাংলা ফাউন্ডেশন অ্যাপ,মুসলিম বাংলা ফাউন্ডেশন অ্যাপ ডাউনলোড,মোবাইল অ্যাপ,এন্ড্রয়েড অ্যাপ,আইফোন অ্যাপ,আইওএস অ্যাপ,ডেস্কটপ অ্যাপ,ওয়েব অ্যাপ,muslim,bangla,app,islamic app,islam,quran,hadith,namajer somoy,dua,masala,bayaan,lecture,kitab,article,blog,online class,hajj,ramadan,iftar,sehri,qibla,hijri date,wedding,bibah,zakat,iman,namajer somoy app,namajer somoy app download,namajer somoy application,namajer somoy application download,sunnah,zakat calculator,islamic names,islamic questions,islamic questions answers,donation,islamic question answer app,islamic question answer app download,digital tasbeeh,quran education,namaj education,mosque finder,roza,Allah&#x27;s names,live [baitullah and masjid e nabawi],full year calendar,important practical notifications,informative widget,bangla quran,bangla hadith,bangla islamic app,bangla islamic application,bangla islamic apps,bangla islamic apps download,bangla islamic app download,bangla islamic application download,muslim bangla app,muslim bangla app download,muslim bangla application,muslim bangla application download,muslim bangla apps,muslim bangla apps download,muslim bangla foundation,muslim bangla foundation app,muslim bangla foundation app download,muslim bangla foundation application,muslim bangla foundation application download,muslim bangla foundation apps,muslim bangla foundation apps download,mobile app,android app,ios app,web app,windows app"/>
+<a class="text-lg font-medium transition-colors hover:text-primary justify-center text-muted-foreground flex items-center gap-1" href="/hadith-books">
+<div class="absolute inset-0 bg-cover bg-center" style="background-image:url(&#x27;/assets/img/hadith-bg.jpg&#x27;)">
+<input class="flex h-9 border border-input px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm rounded-full text-black bg-white w-full min-w-[300px]" placeholder="বাংলা শব্দে: (পরকাল / ইলম / নামাজ)" name="hadith" value=""/>
+<a class="flex items-center gap-2 text-primary-700 hover:text-primary-800 transition-colors" href="/hadith/58798?id=note">
+<a class="flex items-center gap-2 text-primary-700 hover:text-primary-800 transition-colors" href="/hadith/58798?id=explanation">
+<a class="flex items-center gap-2 text-primary-700 hover:text-primary-800 transition-colors" href="/hadith/58799?id=note">
+<a class="flex items-center gap-2 text-primary-700 hover:text-primary-800 transition-colors" href="/hadith/58799?id=explanation">
+<a class="flex items-center gap-2 text-primary-700 hover:text-primary-800 transition-colors" href="/hadith/58800?id=note">
+<a class="flex items-center gap-2 text-primary-700 hover:text-primary-800 transition-colors" href="/hadith/58800?id=explanation">
+<a class="flex items-center gap-2 text-primary-700 hover:text-primary-800 transition-colors" href="/hadith/58801?id=note">
+<a class="flex items-center gap-2 text-primary-700 hover:text-primary-800 transition-colors" href="/hadith/58801?id=explanation">
+grep: write error: Broken pipe
