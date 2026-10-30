@@ -454,15 +454,18 @@ function init(){const q=$("rsQ"),pad=$("rsPad");let mode="ar",BW=null,kb=false;
  const goTopic=t=>(ALLF=false,run(t)).catch(e=>{console.error(e);$("rsInfo").textContent="ডেটা লোড করা যায়নি — ইন্টারনেট দেখে আবার চেষ্টা করুন"});
  const showTopics=async force=>{if(!force&&rs.classList.contains("on")&&rs.dataset.k==="topics"){rs.classList.remove("on");return}
   pad.classList.remove("on");rs.innerHTML="";rs.dataset.k="topics";rs.classList.add("bn","on");$("rsOut").innerHTML="";$("rsInfo").textContent="";
-  rs.appendChild(el("div","rs-rh2","বিষয়ভিত্তিক আয়াত — একটি বিষয় বেছে নিন"));
-  {const dr=el("div","rs-ri rs-tr"),dh=els("div","display:flex;justify-content:space-between;align-items:baseline;gap:10px");dh.append(el("b",null,"🩺 রোগ নির্ণয় (ডায়াগনোসিস)"));dr.append(dh,el("span",null,"প্রতিটি রোগ ও ধরনের মূল আয়াত → চিকিৎসার সব আয়াত"));dr.onclick=showDiag;rs.appendChild(dr)}
-  {const d2=el("div","rs-ri rs-tr"),h2=els("div","display:flex;justify-content:space-between;align-items:baseline;gap:10px");h2.append(el("b",null,"💊 শারীরিক রোগ ও আরোগ্যের আয়াত"));d2.append(h2,el("span",null,"রোগ → সংশ্লিষ্ট অঙ্গ → কাছের আয়াত (পাইলস, জ্বর, মাথা-পেট-দাঁত-গলা-পিঠের ব্যথা, ঘুম, ক্লান্তি…)"));d2.onclick=()=>showDiag(DISEASE);rs.appendChild(d2)}
+  const secH=t=>rs.appendChild(el("div","dr-sec",t));
+  const drRow=(ic,title,desc,count,fn,hero)=>{const row=el("div","dr-row"+(hero?" hero":"")),i=el("div","dr-ic",ic),tx=el("div","dr-tx"),end=el("div","dr-end"),n=el("span","dr-cnt",count);tx.append(el("b",null,title));if(desc)tx.append(el("span",null,desc));end.append(n,el("span","dr-go","›"));row.append(i,tx,end);row.onclick=fn;rs.appendChild(row);return n};
+  secH("রোগ নির্ণয় ও চিকিৎসা");
+  drRow("🩺","রোগ নির্ণয় (ডায়াগনোসিস)","প্রতিটি রোগ ও ধরনের মূল আয়াত → চিকিৎসার সব আয়াত","",showDiag,1);
+  drRow("💊","শারীরিক রোগ ও আরোগ্যের আয়াত","রোগ → সংশ্লিষ্ট অঙ্গ → কাছের আয়াত (পাইলস, জ্বর, মাথা-পেট-দাঁত-গলা-পিঠের ব্যথা, ঘুম, ক্লান্তি…)","",()=>showDiag(DISEASE),1);
   let L=[];try{L=await TS.load()}catch(e){}
   if(rs.dataset.k!=="topics"||!rs.classList.contains("on"))return;
-  L.forEach(t=>{const row=el("div","rs-ri rs-tr"),hd=els("div","display:flex;justify-content:space-between;align-items:baseline;gap:10px"),b=el("b",null,t.name),n=els("span","font-size:12.5px;font-weight:700;opacity:.9;white-space:nowrap;color:var(--primary)",bn2(t.refs.length)+" আয়াত"),c=el("span",null,"📚 আপনার তালিকা");hd.append(b,n);row.append(hd,c);row.onclick=()=>{q.value="";setDir();rs.classList.remove("on");openTopic(t);window.scrollTo({top:rs.getBoundingClientRect().top+scrollY-60,behavior:"smooth"})};rs.appendChild(row)});
-  if(!L.length)rs.appendChild(el("div","rs-rh2","নিজের বিষয় বানাতে: সার্চ করুন → আয়াতের নিচে ‘বাছাই’ টিক দিন → ‘📚 বিষয়ে যোগ’ চাপুন"));
-  const cnt=[];TOPICS.forEach(t=>{const row=el("div","rs-ri rs-tr"),hd=els("div","display:flex;justify-content:space-between;align-items:baseline;gap:10px"),b=el("b",null,t.name),n=els("span","font-size:12.5px;font-weight:700;opacity:.9;white-space:nowrap;color:var(--primary)",TSET.has(t.name)?bn2(TSET.get(t.name).size)+" আয়াত":"…"),c=el("span",null,t.desc||"");hd.append(b,n);row.append(hd,c);cnt.push([t,n]);row.onclick=()=>{q.value=t.name;setDir();rs.classList.remove("on");goTopic(t);window.scrollTo({top:rs.getBoundingClientRect().top+scrollY-60,behavior:"smooth"})};rs.appendChild(row)});fillCounts(cnt);
-  const ft=el("div","rs-rh2"),fi=document.createElement("input");fi.type="file";fi.accept=".json,application/json";fi.style.display="none";fi.onchange=()=>{if(fi.files[0])importTopics(fi.files[0]);fi.value=""};
+  if(L.length){secH("আপনার তালিকা");L.forEach(t=>{drRow("📚",t.name,"",bn2(t.refs.length)+" আয়াত",()=>{q.value="";setDir();rs.classList.remove("on");openTopic(t);window.scrollTo({top:rs.getBoundingClientRect().top+scrollY-60,behavior:"smooth"})})})}
+  else{rs.appendChild(el("div","rs-rh2","নিজের বিষয় বানাতে: সার্চ করুন → আয়াতের নিচে ‘বাছাই’ টিক দিন → ‘📚 বিষয়ে যোগ’ চাপুন"))}
+  secH("বিষয়সমূহ");
+  const cnt=[];TOPICS.forEach((t,i)=>{const n=drRow(bn2(i+1),t.name,t.desc||"","…",()=>{q.value=t.name;setDir();rs.classList.remove("on");goTopic(t);window.scrollTo({top:rs.getBoundingClientRect().top+scrollY-60,behavior:"smooth"})});cnt.push([t,n])});fillCounts(cnt);
+  const ft=el("div","dr-bak"),fi=document.createElement("input");fi.type="file";fi.accept=".json,application/json";fi.style.display="none";fi.onchange=()=>{if(fi.files[0])importTopics(fi.files[0]);fi.value=""};
   ft.append(mkBtn("📥 নিজের তালিকার ব্যাকআপ নামান",exportTopics),mkBtn("📤 ব্যাকআপ ফেরান",()=>fi.click()),fi);ft.style.position="static";rs.appendChild(ft)};
 // ---------- রোগ নির্ণয়ের তালিকা (quran-diagnosis.json) ----------
  const showDiag=async(cfg)=>{const CF=Object.assign({file:"quran-diagnosis.json?v="+DV+"d11",title:"🩺 রোগ নির্ণয় (ডায়াগনোসিস)",sq:"রোগ নির্ণয়",nm:"নির্ণয়",badge:["আয়াতে সরাসরি আছে","শব্দভিত্তিক"],intro:null},cfg&&cfg.file?cfg:{});GEN++;CURT=null;rs.classList.remove("on");pad.classList.remove("on");const out=$("rsOut"),info=$("rsInfo");out.innerHTML="";info.textContent="লোড হচ্ছে…";q.value="";setDir();window.__sq=CF.sq;
@@ -508,5 +511,100 @@ if(!dlDone)setTimeout(async()=>{try{if(navigator.connection&&navigator.connectio
  const ks=["a","c","w"],tot=114*ks.length;let done=0,bad=0;
  for(let z=1;z<=114;z+=3){await Promise.all([0,1,2].filter(d=>z+d<=114).flatMap(d=>ks.map(k=>chunk(k,z+d,1).then(()=>{done++},()=>{done++;bad++}))));dlNote("⬇ ডেটা সেভ হচ্ছে "+bn2(Math.round(done/tot*100))+"%…")}
  dlNote("");if(!bad)try{localStorage.setItem("rsAll",DV)}catch(e){}}catch(e){}},1200);
-init();
+// ---------- সাইডবার, পেজ-রুট ও সম্পূর্ণ কুরআন রিডার ----------
+const SBN="আল-ফাতিহা,আল-বাকারা,আলে ইমরান,আন-নিসা,আল-মায়িদা,আল-আনআম,আল-আরাফ,আল-আনফাল,আত-তাওবা,ইউনুস,হূদ,ইউসুফ,আর-রাদ,ইবরাহীম,আল-হিজর,আন-নাহল,আল-ইসরা,আল-কাহফ,মারইয়াম,ত্বা-হা,আল-আম্বিয়া,আল-হজ্জ,আল-মুমিনূন,আন-নূর,আল-ফুরকান,আশ-শুআরা,আন-নামল,আল-কাসাস,আল-আনকাবূত,আর-রূম,লুকমান,আস-সাজদা,আল-আহযাব,সাবা,ফাতির,ইয়াসীন,আস-সাফফাত,সোয়াদ,আয-যুমার,গাফির,ফুসসিলাত,আশ-শূরা,আয-যুখরুফ,আদ-দুখান,আল-জাসিয়া,আল-আহকাফ,মুহাম্মাদ,আল-ফাতহ,আল-হুজুরাত,ক্বাফ,আয-যারিয়াত,আত-তূর,আন-নাজম,আল-ক্বামার,আর-রহমান,আল-ওয়াকিয়া,আল-হাদীদ,আল-মুজাদালা,আল-হাশর,আল-মুমতাহিনা,আস-সফ,আল-জুমুআ,আল-মুনাফিকূন,আত-তাগাবুন,আত-তালাক,আত-তাহরীম,আল-মুলক,আল-কলম,আল-হাক্কাহ,আল-মাআরিজ,নূহ,আল-জিন,আল-মুযযাম্মিল,আল-মুদ্দাসসির,আল-কিয়ামাহ,আদ-দাহর,আল-মুরসালাত,আন-নাবা,আন-নাযিআত,আবাসা,আত-তাকভীর,আল-ইনফিতার,আল-মুতাফফিফীন,আল-ইনশিকাক,আল-বুরূজ,আত-তারিক,আল-আলা,আল-গাশিয়াহ,আল-ফাজর,আল-বালাদ,আশ-শামস,আল-লাইল,আদ-দুহা,আল-ইনশিরাহ,আত-তীন,আল-আলাক,আল-কদর,আল-বাইয়্যিনাহ,আয-যিলযাল,আল-আদিয়াত,আল-কারিআহ,আত-তাকাসুর,আল-আসর,আল-হুমাযাহ,আল-ফীল,কুরাইশ,আল-মাউন,আল-কাওসার,আল-কাফিরূন,আন-নাসর,আল-লাহাব,আল-ইখলাস,আল-ফালাক,আন-নাস".split(",");
+const AC="7,286,200,176,120,165,206,75,129,109,123,111,43,52,99,128,111,110,98,135,112,78,118,64,77,227,93,88,69,60,34,30,73,54,45,83,182,88,75,85,54,53,89,59,37,35,38,29,18,45,60,49,62,55,78,96,29,22,24,13,14,11,11,18,12,12,30,52,52,44,28,28,20,56,40,31,50,40,46,42,29,19,36,25,22,17,19,26,30,20,15,21,11,8,8,19,5,8,8,11,11,8,3,9,5,4,7,3,6,3,5,4,5,6".split(",").map(Number);
+const RMODES=[["ar","আরবি"],["bn","বাংলা"],["arbn","আরবি + বাংলা"],["word","শব্দে শব্দে"]];
+const lsGet=(k,d)=>{try{const v=localStorage.getItem(k);return v==null?d:v}catch(e){return d}};
+const lsSet=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
+function setFs(n){n=Math.max(20,Math.min(44,n));document.documentElement.style.setProperty("--ar-size",n+"px");lsSet("drFs",String(n));return n}
+function readerTop(mode,s){
+ const top=el("div","dr-rtop"),seg=el("div","dr-seg");
+ RMODES.forEach(([m,l])=>{const b=el("button",m===mode?"on":"",l);b.type="button";b.onclick=()=>{location.hash="#read/"+m+(s?"/"+s:"")};seg.appendChild(b)});
+ const nv=el("div","dr-nv"),pv=el("button",null,"‹"),nx=el("button",null,"›"),sel=document.createElement("select");
+ pv.type=nx.type="button";pv.title="আগের সূরা";nx.title="পরের সূরা";sel.setAttribute("aria-label","সূরা বেছে নিন");
+ const o0=document.createElement("option");o0.value="0";o0.textContent="সূরার তালিকা — ১১৪টি";sel.appendChild(o0);
+ SBN.forEach((n,i)=>{const o=document.createElement("option");o.value=i+1;o.textContent=bn2(i+1)+". "+n;sel.appendChild(o)});
+ sel.value=String(s||0);
+ const go=n=>{location.hash="#read/"+mode+(n?"/"+n:"")};
+ sel.onchange=()=>go(+sel.value);pv.disabled=!s||s<=1;nx.disabled=!s||s>=114;pv.onclick=()=>go(s-1);nx.onclick=()=>go(s+1);
+ const fm=el("button","fs","A−"),fp=el("button","fs","A+");fm.type=fp.type="button";fm.title="লেখা ছোট";fp.title="লেখা বড়";
+ const cur=()=>parseInt(getComputedStyle(document.documentElement).getPropertyValue("--ar-size"))||26;
+ fm.onclick=()=>setFs(cur()-2);fp.onclick=()=>setFs(cur()+2);
+ nv.append(pv,sel,nx,fm,fp);top.append(seg,nv);return top}
+function surahList(body,mode){
+ const f=document.createElement("input");f.className="dr-find";f.type="search";f.placeholder="সূরার নাম বা নম্বর লিখে খুঁজুন";f.setAttribute("aria-label","সূরা খুঁজুন");f.autocomplete="off";
+ const last=+lsGet("drLast","0");
+ if(last>=1&&last<=114){const r=el("div","dr-sl"),n=el("div","dr-no");n.appendChild(el("span",null,bn2(last)));const t=el("div","dr-sn");t.append(el("b",null,"চালিয়ে যান — সূরা "+SBN[last-1]),el("small",null,"সর্বশেষ যে সূরা খুলেছিলেন"));r.append(n,t,el("div","dr-sa",SN[last-1]));r.onclick=()=>{location.hash="#read/"+mode+"/"+last};r.style.borderColor="var(--accent)";body.appendChild(r)}
+ body.appendChild(f);
+ const list=el("div");body.appendChild(list);
+ const draw=()=>{const q=f.value.trim().replace(/[০-৯]/g,d=>"০১২৩৪৫৬৭৮৯".indexOf(d)),qa=nz(q),qb=fb(q);list.innerHTML="";let c=0;
+  SBN.forEach((n,i)=>{if(q&&!(String(i+1)===q||(qa&&nz(SN[i]).includes(qa))||(/[ঀ-৿]/.test(q)&&fb(n).includes(qb))))return;c++;
+   const r=el("div","dr-sl"),no=el("div","dr-no"),t=el("div","dr-sn");no.appendChild(el("span",null,bn2(i+1)));t.append(el("b",null,n),el("small",null,bn2(AC[i])+" আয়াত"));r.append(no,t,el("div","dr-sa",SN[i]));r.onclick=()=>{location.hash="#read/"+mode+"/"+(i+1)};list.appendChild(r)});
+  if(!c)list.appendChild(el("div","rs-info","কোনো সূরা পাওয়া যায়নি"))};
+ f.oninput=draw;draw()}
+async function surahView(body,mode,s,g){
+ const N=AC[s-1];lsSet("drLast",String(s));SELV.clear();selChange();CURT=null;
+ const hero=el("div","dr-hero");hero.append(el("span","ar",SN[s-1]),el("b",null,"সূরা "+SBN[s-1]),el("small",null,"সূরা নং "+bn2(s)+" · মোট "+bn2(N)+" আয়াত"));body.appendChild(hero);
+ // আয়াত নম্বরে লাফ
+ const jr=els("div","display:flex;gap:8px;margin:0 0 12px"),ji=document.createElement("input");ji.className="dr-find";ji.style.margin="0";ji.type="number";ji.inputMode="numeric";ji.min=1;ji.max=N;ji.placeholder="আয়াত নং (১–"+bn2(N)+")";
+ const jb=el("button","rs-wb","যান");jb.type="button";jb.style.cssText="margin:0;flex:none;padding:0 20px;border-radius:14px";jr.append(ji,jb);body.appendChild(jr);
+ const ad=el("details","dr-audio"),as=el("summary",null,"🎧 অডিও ও অন্যান্য অপশন"),ab=el("div");ad.append(as,ab);body.appendChild(ad);
+ audioBar(ab,Array.from({length:N},(_,i)=>[s,i+1]));
+ const host=el("div");body.appendChild(host);
+ host.appendChild(el("div","rs-info","লোড হচ্ছে…"));
+ let A,B,W=null;
+ try{[A,B]=await Promise.all([chunk("a",s),chunk(TR,s)]);await wqLoad()}catch(e){if(g!==RG)return;host.textContent="";const b=el("button","rs-more","লোড করা যায়নি — ইন্টারনেট দেখে আবার চেষ্টা করুন");b.type="button";b.onclick=()=>renderReader(mode,s);host.appendChild(b);return}
+ if(mode==="word"||mode==="ar"||mode==="arbn"||mode==="bn")chunk("w",s).then(x=>{W=x}).catch(()=>{});
+ if(mode==="word")try{W=await chunk("w",s)}catch(e){W=null}
+ if(g!==RG)return;host.textContent="";
+ if(s!==1&&s!==9){try{const[A1,B1]=await Promise.all([chunk("a",1),chunk(TR,1)]);if(g!==RG)return;
+  if(mode==="bn"){const d=el("div","dr-bis");d.style.cssText="font-family:inherit;font-size:15px;direction:ltr";d.textContent=(B1||[])[0]||"";host.appendChild(d)}else host.appendChild(el("div","dr-bis",(A1||[])[0]||""))}catch(e){}}
+ const mk=a=>{const t=A[a-1]||"",tb=(B||[])[a-1]||"";
+  const box=el("div","dr-ay"+(mode==="bn"?" bnonly":"")+(mode==="word"?" wordm":""));box.id="ay-"+a;
+  const hd=el("div","dr-ah");hd.append(el("span","dr-an",bn2(a)),el("em",null,"সূরা "+SBN[s-1]+" · "+bn2(s)+":"+bn2(a)));
+  const tx=el("div","rs-vt rs-ar");arFill(tx,s,a,t,0);
+  const tr=el("div","rs-vb");tr.textContent=tb;
+  const wh=el("div","rs-ww"),va=el("div","rs-va");
+  let filled=false;const fill=()=>{if(filled)return true;if(!W)return false;filled=true;const m=(W[a-1]||"").split("|");t.split(" ").forEach((x,i)=>{const c=el("div","rs-wc"),a2=el("div","rs-wa rs-ar",x),b2=el("div","rs-wm",m[i]||"");c.append(a2,b2);wh.appendChild(c)});return true};
+  box.append(hd);
+  if(mode==="ar"||mode==="arbn")box.append(tx);
+  if(mode==="word"){fill();if(!filled){wh.textContent="শব্দার্থ লোড করা যায়নি";}wh.classList.add("on");box.append(wh,tr)}
+  if(mode==="bn"||mode==="arbn")box.append(tr);
+  if(mode!=="word"){const wb=el("button","rs-wb","শব্দে শব্দে অর্থ");wb.type="button";
+   wb.onclick=async()=>{wh.classList.toggle("on");if(filled)return;wh.textContent="লোড হচ্ছে…";try{W=W||await chunk("w",s);wh.textContent="";if(!fill())wh.textContent="শব্দার্থ পাওয়া যায়নি"}catch(e){wh.textContent="লোড করা যায়নি — আবার চাপুন"}};
+   va.appendChild(wb)}
+  va.append(copyBtn("📋 কপি",()=>{const h="সূরা "+SN[s-1]+" — "+s+":"+a;return mode==="ar"?h+"\n"+t:mode==="bn"||mode==="word"?h+"\n"+tb:h+"\n"+t+"\n"+tb}),playBtn(s,a),selBox(s,a));
+  box.append(va);if(mode!=="word")box.append(wh);return box};
+ let i=0;const step=mode==="word"?10:20,more=el("button","rs-more","");more.type="button";host.appendChild(more);
+ let io=null;
+ const add=n=>{const to=Math.min(N,n||i+step);while(i<to){i++;host.insertBefore(mk(i),more)}
+  if(i>=N){more.style.display="none";io&&io.disconnect()}else more.textContent="আরও আয়াত দেখুন ("+bn2(N-i)+" বাকি)"};
+ more.onclick=()=>add();
+ if("IntersectionObserver"in window){io=new IntersectionObserver(es=>{if(g!==RG){io.disconnect();return}if(es[es.length-1].isIntersecting)add()},{rootMargin:"700px 0px"});io.observe(more)}
+ add();
+ const jump=()=>{const n=Math.round(+ji.value);if(!n||n<1||n>N)return alert("১ থেকে "+bn2(N)+"-এর মধ্যে আয়াত নম্বর দিন");add(n);const e=$("ay-"+n);e&&e.scrollIntoView({behavior:"smooth",block:"start"})};
+ jb.onclick=jump;ji.onkeydown=e=>{if(e.key==="Enter"){e.preventDefault();jump()}};
+ const en=el("div","dr-end-nav"),pv=el("button",null,"‹ আগের সূরা"),nx=el("button",null,"পরের সূরা ›");pv.type=nx.type="button";pv.disabled=s<=1;nx.disabled=s>=114;
+ pv.onclick=()=>{location.hash="#read/"+mode+"/"+(s-1)};nx.onclick=()=>{location.hash="#read/"+mode+"/"+(s+1)};en.append(pv,nx);body.appendChild(en)}
+let RG=0;
+function renderReader(mode,s){const g=++RG,rd=$("drReader");GEN++;rd.innerHTML="";rd.appendChild(readerTop(mode,s));const body=el("div","dr-rbody");rd.appendChild(body);if(!s)surahList(body,mode);else surahView(body,mode,s,g)}
+function drShell(){
+ setFs(+lsGet("drFs","26")||26);
+ const side=$("drSide"),scrim=$("drScrim"),menu=$("drMenu"),box=$("rsBox"),rd=$("drReader");
+ const open=on=>{side.classList.toggle("on",on);scrim.classList.toggle("on",on);document.body.classList.toggle("dr-lock",on);side.setAttribute("aria-hidden",on?"false":"true");menu.setAttribute("aria-expanded",on?"true":"false")};
+ menu.onclick=()=>open(true);$("drClose").onclick=scrim.onclick=()=>open(false);
+ document.addEventListener("keydown",e=>{if(e.key==="Escape")open(false)});
+ const navs=[...document.querySelectorAll(".dr-nav")];
+ let prev="";
+ const route=()=>{open(false);const h=(location.hash||"#search").replace(/^#/,""),p=h.split("/");
+  document.querySelectorAll("audio").forEach(a=>{try{a.pause()}catch(e){}});
+  let key="search";
+  if(p[0]==="read"&&RMODES.some(m=>m[0]===p[1])){key="read/"+p[1];const s=+p[2]||0;box.hidden=true;rd.hidden=false;renderReader(p[1],s>=1&&s<=114?s:0);window.scrollTo(0,0)}
+  else{rd.hidden=true;box.hidden=false;RG++;if(p[0]==="topics"){key="topics";SHOWT&&SHOWT(true);window.scrollTo(0,0)}else if(prev.startsWith("read/")||prev==="")window.scrollTo(0,0)}
+  prev=key;navs.forEach(a=>a.classList.toggle("on",a.dataset.nav===key))};
+ navs.forEach(a=>a.addEventListener("click",e=>{e.preventDefault();const h=a.getAttribute("href");if(location.hash===h)route();else location.hash=h;open(false)}));
+ addEventListener("hashchange",route);
+ route()}
+init();drShell();
 })();
