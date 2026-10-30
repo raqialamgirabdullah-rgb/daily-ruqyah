@@ -18,6 +18,10 @@ jobs:
         uses: google-github-actions/run-gemini-cli@v0.1.22
         with:
           gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
+          gemini_cli_version: latest
+          gemini_debug: true
+          settings: |
+            {"general":{"approvalMode":"yolo"}}
           prompt: |
             তুমি এই রিপোর কোড-সহকারী। নিচের কাজটি করো। ওয়ার্কিং ডিরেক্টরির ফাইল সরাসরি বদলাও, কমিট বা পুশ করো না।
             শুধু কাজে যা লাগে তা বদলাও, অন্য কিছু ছোঁবে না।
