@@ -247,11 +247,19 @@ button,input,select{font-family:inherit}
 .dr-menu.dot{position:relative}
 .dr-menu.dot::after{content:"";position:absolute;top:8px;right:8px;width:10px;height:10px;border-radius:50%;background:#d8b25a;box-shadow:0 0 0 2px #073b2e}
 
-/* ---------- হাদিস পর্দা (#hadith) ---------- */
-#hdQ{flex:1;box-sizing:border-box;border:0;outline:0;background:transparent;color:inherit;padding:10px 6px;font-size:19px;text-align:center;min-width:0;-webkit-appearance:none;appearance:none;font-family:"Amiri","Noto Naskh Arabic",var(--font-main),sans-serif;-webkit-user-select:text;user-select:text}
-#hdQ::placeholder{text-align:center;opacity:.45;font-size:16px}
-.dr-hadith{padding-bottom:22px}
-.hd-chips{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 2px}
+/* ---------- হাদিস (সার্চের ওপরের অপশন: শুধু কুরআন / হাদিস / কুরআন ও হাদিস) ---------- */
+.hd-scope{display:flex;gap:6px;margin:14px 0 0}
+.hd-scope button{flex:1 1 auto;white-space:nowrap;border:1.5px solid var(--border);background:var(--card-bg);color:var(--text-sub);border-radius:999px;padding:8px 6px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:background .15s,color .15s,border-color .15s}
+.hd-scope button.on{background:var(--primary);color:#fff;border-color:var(--primary)}
+.hd-scope button.on::before{content:"✓ ";font-weight:700}
+.hd-jump{display:block;width:100%;margin:12px 0 0;border:1.5px solid var(--accent);background:var(--accent-light);color:var(--primary);border-radius:14px;padding:9px 12px;font-size:13.5px;font-weight:600;cursor:pointer;font-family:inherit;text-align:center}
+.hd-jump[hidden]{display:none}
+#hdBox{display:none;scroll-margin-top:72px}
+#hdBox.on{display:block}
+#hdBox.b{margin-top:20px;padding-top:6px;border-top:2px solid var(--border-light)}
+.hd-sec{display:none;font-size:16px;font-weight:700;color:var(--primary);margin:10px 2px 2px}
+#hdBox.b .hd-sec{display:block}
+.hd-chips{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 2px}
 .hd-chips button{border:1px solid var(--border-light);background:var(--card-bg);color:var(--primary);border-radius:999px;padding:4px 11px;font-size:12.5px;cursor:pointer;font-family:inherit}
 .hd-chips button.on{background:var(--primary);color:#fff;border-color:var(--primary)}
 .hd-chips button:disabled{opacity:.4;cursor:default}

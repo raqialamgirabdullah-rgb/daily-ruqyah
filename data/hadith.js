@@ -1,13 +1,16 @@
-/* নোট: ডেটা-ফাইলের নাম .json হলেও ভেতরে gzip থাকে (Android বিল্ড .gz নামের ফাইল নিজে খুলে এক্সটেনশন কেটে দেয়, তাই .gz নাম ব্যবহার করা যাবে না); getJson() প্রথম বাইট দেখে gzip/সাধারণ দুটোই পড়ে।
-   Daily Ruqyah — হাদিস পর্দা (#hadith): আরবি + বাংলা হাদীস সার্চ।
+/* Daily Ruqyah — হাদিস সার্চ। আয়াত-সার্চের ওপরে তিনটি অপশন বসায়: শুধু কুরআন / হাদিস / কুরআন ও হাদিস।
    ডেটা: data/hadith-chunks/ (বুখারী, মুসলিম, আবূ দাউদ, তিরমিযী, নাসাঈ, ইবনু মাজাহ, মালিক, নাবাবী ৪০, কুদসী ৪০ — ৩৬,১৪৬ হাদীস)।
-   শব্দের রূপ: data/hadith-norm.js (ডেটা বানানোর সময়ের সাথে হুবহু এক থাকতে হবে)। প্রথমবার পর্দাটি খুললে তৈরি হয়। */
+   শব্দের রূপ: data/hadith-norm.js (ডেটা বানানোর সময়ের সাথে হুবহু এক থাকতে হবে)।
+   নোট: ডেটা-ফাইলের নাম .json হলেও ভেতরে gzip থাকে (Android বিল্ড .gz নামের ফাইল নিজে খুলে এক্সটেনশন কেটে দেয়, তাই .gz নাম চলে না);
+   getJson() প্রথম বাইট দেখে gzip/সাধারণ দুটোই পড়ে। কুরআনের কোডে হাত না দিয়ে ক্যাপচার-লিসেনারে যুক্ত হয়। */
 (function () {
   "use strict";
   var DV = "2";
   var D = new URL("data/hadith-chunks/", document.baseURI).href;
   var PAGE = 10;
   var $ = function (i) { return document.getElementById(i); };
+  if (window.__hdLoaded) return;
+  window.__hdLoaded = 1;
   var SHORT = ["বুখারী", "মুসলিম", "আবূ দাউদ", "তিরমিযী", "নাসাঈ", "ইবনু মাজাহ", "মালিক", "নাবাবী ৪০", "কুদসী ৪০"];
   var ALIAS = [
     ["বুখারী", "বুখারি", "bukhari", "بخاري", "বোখারী"],
@@ -22,17 +25,72 @@
   ];
 
 
-  var built = false;
+  var MODES = [["q", "শুধু কুরআন"], ["h", "হাদিস"], ["b", "কুরআন ও হাদিস"]];
 
-  function build(host, N) {
+  function build(N) {
+    var box = $("rsBox"), q = $("rsQ");
     var META = null, memo = {}, st = null, gen = 0;
-    host.innerHTML =
-      '<div class="dr-hello"><b>হাদিস খুঁজুন</b><span>বাংলা বা আরবি শব্দ লিখুন, অথবা সংকলনের নাম ও নম্বর দিন (যেমন: বুখারী ১)</span></div>' +
-      '<div class="rs-bar"><input id="hdQ" type="text" dir="auto" enterkeyhint="search" placeholder="হাদীসের শব্দ লিখুন (বাংলা/আরবি)" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">' +
-      '<button class="rs-ib" id="hdX" type="button" title="মুছুন">✕</button><button class="rs-ib" id="hdGo" type="button" title="সার্চ">🔍</button></div>' +
-      '<div class="hd-chips" id="hdChips"></div><div class="hd-info" id="hdInfo"></div><div id="hdOut"></div>' +
-      '<button type="button" class="hd-more" id="hdMore" style="display:none"></button>';
-    var q = $("hdQ"), chipsEl = $("hdChips"), infoEl = $("hdInfo"), outEl = $("hdOut"), moreEl = $("hdMore");
+    var mode = "q";
+    var QPH = q.placeholder || "সার্চ করুন";
+
+    /* ───── অপশন-সারি, হাদিসের পাত্র, লাফ-বোতাম ───── */
+    var bar = document.createElement("div");
+    bar.className = "hd-scope"; bar.setAttribute("role", "radiogroup"); bar.setAttribute("aria-label", "কোথায় খুঁজবেন");
+    MODES.forEach(function (m) {
+      var b = document.createElement("button");
+      b.type = "button"; b.setAttribute("role", "radio"); b.setAttribute("data-m", m[0]); b.textContent = m[1];
+      bar.appendChild(b);
+    });
+    box.insertBefore(bar, box.querySelector(".rs-bar"));
+
+    var jump = document.createElement("button");
+    jump.type = "button"; jump.className = "hd-jump"; jump.id = "hdJump"; jump.hidden = true;
+    box.insertBefore(jump, $("rsInfo"));
+
+    var hb = document.createElement("div");
+    hb.id = "hdBox";
+    hb.innerHTML = '<div class="hd-sec">📜 হাদিস</div><div class="hd-chips" id="hdChips"></div><div class="hd-info" id="hdInfo"></div><div id="hdOut"></div><button type="button" class="hd-more" id="hdMore" style="display:none"></button>';
+    var anchor = $("rsOut");
+    anchor.parentNode.insertBefore(hb, anchor.nextSibling);
+    var chipsEl = $("hdChips"), infoEl = $("hdInfo"), outEl = $("hdOut"), moreEl = $("hdMore");
+
+    var quranIds = ["rsKb", "rsTp", "rsPad", "rsRs", "rsInfo", "rsOut"];
+
+    function syncJump() {
+      if (mode !== "b" || !st || !st.all || !st.all.length) { jump.hidden = true; return; }
+      jump.hidden = false;
+      jump.textContent = "📜 হাদিসে " + bnum(st.all.length) + "টি পাওয়া গেছে — দেখুন ↓";
+    }
+    function clearAll() {
+      gen++; st = null;
+      outEl.innerHTML = ""; chipsEl.innerHTML = ""; infoEl.innerHTML = ""; moreEl.style.display = "none";
+      syncJump();
+    }
+    jump.onclick = function () { hb.scrollIntoView({ behavior: "smooth", block: "start" }); };
+
+    function setPh() { q.placeholder = mode === "h" ? "হাদীসের শব্দ লিখুন (বাংলা/আরবি)" : mode === "b" ? "কুরআন ও হাদিসে সার্চ করুন" : QPH; }
+    function setMode(m, run) {
+      var prev = mode;
+      mode = m;
+      Array.prototype.forEach.call(bar.children, function (b) {
+        var on = b.getAttribute("data-m") === m;
+        b.classList.toggle("on", on); b.setAttribute("aria-checked", on ? "true" : "false");
+      });
+      quranIds.forEach(function (id) { var e = $(id); if (e) e.style.display = m === "h" ? "none" : ""; });
+      hb.classList.toggle("on", m !== "q");
+      hb.classList.toggle("b", m === "b");
+      setPh();
+      if (prev !== m) {
+        if (m === "q") { gen++; jump.hidden = true; }
+        else if (m === "h") { if (q.value.trim()) search(); else intro(); ensureMeta().catch(function () {}); }
+        else { if (q.value.trim()) search(); else clearAll(); ensureMeta().catch(function () {}); }
+      }
+      try { localStorage.setItem("drScope", m); } catch (e) {}
+    }
+    bar.onclick = function (e) {
+      var b = e.target.closest("button");
+      if (b && b.getAttribute("data-m") !== mode) setMode(b.getAttribute("data-m"));
+    };
 
     /* ───── ডেটা আনা (ক্যাশসহ) ───── */
     async function getJson(path) {
@@ -188,6 +246,7 @@
     }
 
     function intro() {
+      if (mode === "b") { clearAll(); return; }
       outEl.innerHTML = "";
       chipsEl.innerHTML = "";
       moreEl.style.display = "none";
@@ -205,7 +264,7 @@
       infoEl.appendChild(l);
     }
 
-    function message(t) { infoEl.textContent = t; }
+    function message(t) { infoEl.textContent = t; syncJump(); }
 
     async function byNumber(raw) {
       var s = raw.replace(/[০-৯]/g, function (d) { return "০১২৩৪৫৬৭৮৯".indexOf(d); }).trim();
@@ -290,6 +349,7 @@
     async function show() {
       var my = gen;
       chipsDraw();
+      syncJump();
       var from = st.page * PAGE, part = st.ids.slice(from, from + PAGE);
       var total = st.ids.length;
       infoEl.textContent = (st.note ? st.note + " " : "") + (st.toks.length ? bnum(total) + "টি হাদীস পাওয়া গেছে" : "");
@@ -308,19 +368,44 @@
     moreEl.onclick = function () { if (st) show(); };
 
     
-    $("hdGo").onclick = function () { q.blur(); search(); };
-    $("hdX").onclick = function () { q.value = ""; gen++; st = null; intro(); q.focus(); };
-    q.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); q.blur(); search(); } });
-    $("hdX").onpointerdown = $("hdGo").onpointerdown = function (e) { e.preventDefault(); };
-    intro();
-    ensureMeta().catch(function () {});
+    /* ───── কুরআনের সার্চ-বোতামগুলোর সাথে জোড়া ───── */
+    document.addEventListener("click", function (e) {
+      if (mode === "q") return;
+      var t = e.target; if (!t.closest) return;
+      if (t.closest("#rsGo")) {
+        if (mode === "h") { e.stopImmediatePropagation(); e.preventDefault(); q.blur(); }
+        search();
+      } else if (t.closest("#rsX")) {
+        if (mode === "h") { e.stopImmediatePropagation(); e.preventDefault(); q.value = ""; clearAll(); intro(); q.focus(); }
+        else clearAll();
+      } else if (mode === "b" && t.closest("#rsTp")) {
+        clearAll();
+      }
+    }, true);
+    /* কুরআনের তালিকা (রুট/শব্দ/বিষয়) থেকে কিছু বাছলে প্রশ্ন বদলে যায় — হাদিসও সেই অনুযায়ী মিলিয়ে নেওয়া */
+    document.addEventListener("click", function (e) {
+      if (mode !== "b" || !e.target.closest || !e.target.closest("#rsRs .rs-ri")) return;
+      if (q.value.trim()) search(); else clearAll();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (mode === "q" || e.target !== q || e.key !== "Enter") return;
+      if (mode === "h") { e.stopImmediatePropagation(); e.preventDefault(); q.blur(); }
+      search();
+    }, true);
+    q.addEventListener("input", function () { setPh(); });
+    /* সাইডবারের "বিষয়ভিত্তিক আয়াত" কুরআনের নিজস্ব — তাই সেখানে গেলে শুধু কুরআনে ফেরা */
+    addEventListener("hashchange", function () { if (/^#topics/.test(location.hash) && mode === "h") setMode("q"); });
+
+    var saved = "q";
+    try { saved = localStorage.getItem("drScope") || "q"; } catch (e) {}
+    if (!/^(q|h|b)$/.test(saved) || /^#topics/.test(location.hash)) saved = "q";
+    setMode("q");
+    if (saved !== "q") setMode(saved);
   }
 
-  window.DRHadith = {
-    open: function () {
-      var host = $("drHadith"), N = window.HDNORM;
-      if (!host || !N) return;
-      if (!built) { built = true; build(host, N); }
-    }
-  };
+  function start() {
+    if (!$("rsBox") || !$("rsQ") || !window.HDNORM) return;
+    build(window.HDNORM);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start); else start();
 })();

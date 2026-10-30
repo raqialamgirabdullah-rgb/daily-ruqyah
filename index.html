@@ -12,7 +12,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Daily Ruqyah">
-<link rel="stylesheet" href="style.css?v=4">
+<link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
 <header class="dr-bar">
@@ -35,8 +35,6 @@
  <a class="dr-nav" href="#read/bn" data-nav="read/bn"><i>বা</i><span>কুরআন বাংলা অনুবাদ</span></a>
  <a class="dr-nav" href="#read/arbn" data-nav="read/arbn"><i class="ar">عب</i><span>আরবি ও বাংলা অনুবাদসহ</span></a>
  <a class="dr-nav" href="#read/word" data-nav="read/word"><i>⋯</i><span>শব্দে শব্দে কুরআন</span></a>
- <div class="dr-side-sec">হাদিস</div>
- <a class="dr-nav" href="#hadith" data-nav="hadith"><i>📜</i><span>হাদিস খুঁজুন</span></a>
  <div class="dr-side-sec">অ্যাপ</div>
  <div class="dr-upd">
   <div class="dr-upd-v" id="drVer">সংস্করণ …</div>
@@ -49,7 +47,7 @@
 <main class="dr-main">
 <div class="rs-box" id="rsBox">
  <div class="dr-inst" id="drInst"></div>
- <div class="dr-hello"><b>আয়াত খুঁজুন</b><span>আরবি বা বাংলা শব্দ লিখুন, অথবা নিচে বিষয় বেছে নিন</span></div>
+ <div class="dr-hello"><b>আয়াত খুঁজুন</b><span>আরবি বা বাংলা শব্দ লিখুন (কুরআন ও হাদিস), অথবা নিচে বিষয় বেছে নিন</span></div>
  <div class="rs-bar"><button class="rs-ib" id="rsKb" type="button" title="আরবি কীবোর্ড">⌨</button><input id="rsQ" type="text" dir="auto" enterkeyhint="search" style="text-align:center" placeholder="সার্চ করুন" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false"><button class="rs-ib" id="rsX" type="button" title="মুছুন">✕</button><button class="rs-ib" id="rsGo" type="button" title="সার্চ">🔍</button></div>
  <button class="rs-tp" id="rsTp" type="button"><span>📚 বিষয়ভিত্তিক আয়াত</span><i>›</i></button>
  <div class="rs-pad" id="rsPad"></div>
@@ -57,12 +55,11 @@
  <div id="rsOut"></div>
 </div>
 <div class="rs-box dr-reader" id="drReader" hidden></div>
-<div class="rs-box dr-hadith" id="drHadith" hidden></div>
 </main>
 <div class="dr-foot">আয়াত ও অর্থের উৎস: Tanzil, Quranic Arabic Corpus ও অন্যান্য; হাদিস: fawazahmed0/hadith-api — বিবরণ <a href="QURAN-DATA-NOTICE.md">QURAN-DATA-NOTICE.md</a> ও <a href="HADITH-DATA-NOTICE.md">HADITH-DATA-NOTICE.md</a>-এ। গবেষণার তথ্য, ফতোয়া বা চিকিৎসার বিকল্প নয়।</div>
+<script src="app.js?v=5"></script>
+<script src="boot.js?v=5"></script>
 <script src="data/hadith-norm.js?v=1"></script>
-<script src="data/hadith.js?v=2"></script>
-<script src="app.js?v=4"></script>
-<script src="boot.js?v=4"></script>
+<script src="data/hadith.js?v=3"></script>
 </body>
 </html>
