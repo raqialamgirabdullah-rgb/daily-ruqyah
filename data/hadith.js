@@ -178,8 +178,10 @@
       el.className = "hd-card";
       var h = '<div class="hd-hd"><b>' + esc(col.bn) + "</b><span>হাদীস নং " + bnum(r[1]) + "</span>" + (r[5] ? "<span>· কিতাব " + bnum(r[5]) + "</span>" : "") + (r[4] ? '<span class="hd-gr">' + esc(r[4]) + "</span>" : "") + "</div>";
       if (r[2]) h += '<div class="hd-ar">' + mark(r[2], set) + "</div>";
-      if (r[3]) h += '<div class="hd-bn">' + mark(r[3], set) + "</div>";
-      else if (col.hasBn === false) h += '<div class="hd-no">(এই সংকলনের বাংলা অনুবাদ ডেটায় নেই)</div>';
+      if (r[3]) {
+        if (col.lang === "en") h += '<div style="font-size:11px;color:#777;margin-top:4px">ইংরেজি অনুবাদ</div><div class="hd-bn" dir="ltr" lang="en" style="font-family:system-ui,sans-serif">' + mark(r[3], set) + "</div>";
+        else h += '<div class="hd-bn">' + mark(r[3], set) + "</div>";
+      } else if (col.hasBn === false) h += '<div class="hd-no">(এই সংকলনের বাংলা অনুবাদ ডেটায় নেই)</div>';
       else h += '<div class="hd-no">(এই হাদীসের বাংলা অনুবাদ ডেটায় নেই)</div>';
       el.innerHTML = h;
       var ar = el.querySelector(".hd-ar"), bn = el.querySelector(".hd-bn");
@@ -200,7 +202,9 @@
       cp.type = "button"; cp.className = "hd-ex hd-tg"; cp.textContent = "📋 কপি";
       cp.onclick = async function () {
         cp.disabled = true;
-        var t = col.bn + " — হাদীস নং " + r[1] + (r[5] ? " (কিতাব " + r[5] + ")" : "") + "\n" + (r[2] || "") + "\n" + (r[3] || "") + (r[4] ? "\n[" + r[4] + "]" : "");
+        var tr = r[3] || "";
+        if (col.lang === "en" && tr) tr = "ইংরেজি অনুবাদ\n" + tr;
+        var t = col.bn + " — হাদীস নং " + r[1] + (r[5] ? " (কিতাব " + r[5] + ")" : "") + "\n" + (r[2] || "") + "\n" + tr + (r[4] ? "\n[" + r[4] + "]" : "");
         var ok = await copyTxt(t);
         cp.textContent = ok ? "✅ কপি হয়েছে" : "কপি করা যায়নি";
         setTimeout(function () { cp.textContent = "📋 কপি"; cp.disabled = false; }, 1500);
