@@ -27,5 +27,6 @@ Fetching: https://muslimbangla.com/hadith-book/8/chapter/419
 Total unique hadiths collected for Book 8: 401
 Empty bn count: 0, Empty ar count: 0, Corrupt refs: 0
 Parse failures: 0 []
-INCOMPLETE: got 401 of ~415 hadiths for book 8. Not saving.
-exit=2
+Max number: 415, missing numbers (15): 82,96,109,140,166,220,244,251,255,272,274,278,294,384,411
+Saved output to out/8-shamail.json
+exit=0

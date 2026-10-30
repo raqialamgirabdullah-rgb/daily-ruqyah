@@ -62,5 +62,6 @@ Fetching: https://muslimbangla.com/hadith-book/16/chapter/579?page=3
 Total unique hadiths collected for Book 16: 1040
 Empty bn count: 0, Empty ar count: 0, Corrupt refs: 0
 Parse failures: 0 []
-INCOMPLETE: got 1040 of ~1906 hadiths for book 16. Not saving.
-exit=2
+Max number: 1041, missing numbers (1): 955
+Saved output to out/16-riyad.json
+exit=0

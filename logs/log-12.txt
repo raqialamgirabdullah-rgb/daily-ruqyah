@@ -73,5 +73,6 @@ Fetching: https://muslimbangla.com/hadith-book/12/chapter/490?page=67
 Total unique hadiths collected for Book 12: 1330
 Empty bn count: 0, Empty ar count: 0, Corrupt refs: 0
 Parse failures: 0 []
+Max number: 1330, missing numbers (2): 439,1141
 Saved output to out/12-adab.json
 exit=0
