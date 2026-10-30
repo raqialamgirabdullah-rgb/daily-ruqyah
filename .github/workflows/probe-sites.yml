@@ -1,4 +1,4 @@
-# অস্থায়ী: বাংলা-হাদিস সাইটের কাঠামো দেখার পরীক্ষামূলক রান (কাজ শেষে মুছে ফেলা হবে)
+# অস্থায়ী: muslimbangla-র হাদিস পেজের কাঠামো দেখা (কাজ শেষে মুছে ফেলা হবে)
 name: probe-sites
 on:
   push:
@@ -15,17 +15,18 @@ jobs:
       - name: Probe
         run: |
           UA="Mozilla/5.0 (compatible; DailyRuqyahResearch/1.0)"
+          S=https://muslimbangla.com
+          g() { curl -s -L -A "$UA" --max-time 40 "$@"; sleep 2; }
+          strip() { python3 -c "
+          import sys,re,html
+          t=sys.stdin.read()
+          t=re.sub(r'<script.*?</script>|<style.*?</style>','',t,flags=re.S)
+          t=re.sub(r'<[^>]+>',' ',t); print(html.unescape(re.sub(r'\s+',' ',t)))"; }
           {
-          for site in https://hadithbd.com https://www.hadithbd.com https://muslimbangla.com https://www.muslimbangla.com; do
-            echo "=================== $site"
-            code=$(curl -s -L -A "$UA" -o /tmp/home.html -w "%{http_code} %{url_effective} size=%{size_download}" --max-time 30 "$site/")
-            echo "HOME: $code"
-            echo "--- robots.txt"; curl -s -L -A "$UA" --max-time 20 "$site/robots.txt" | head -30
-            echo "--- title"; grep -o '<title>[^<]*' /tmp/home.html | head -2
-            echo "--- links (unique, first 70)"; grep -o 'href="[^"]*"' /tmp/home.html | sort -u | head -70
-          done
+          echo "##### TERMS"; g $S/terms-conditions | strip | head -c 3500
+          echo; echo "##### SITEMAP index"; g $S/sitemap.xml | head -c 1500
+          echo; echo "##### /hadith-books links"; g $S/hadith-books -o /tmp/hb.html; grep -o 'href="/hadith[^"]*"' /tmp/hb.html | sort -u | head -60
+          echo "--- text"; strip < /tmp/hb.html | head -c 1500
           } > probe-output.txt 2>&1
-      - name: Commit result
-        run: |
           git config user.name "probe-bot"; git config user.email "probe-bot@users.noreply.github.com"
-          git add probe-output.txt && git commit -m "probe: ফলাফল" && git push
+          git add probe-output.txt && git commit -q -m "probe: ফলাফল ২" && git push
