@@ -29,7 +29,18 @@ jobs:
           TASK="$(printf '%s' "$TASK" | sed '/^---$/,$d')"
           MODELS=""
           [ -n "$GROQ_API_KEY" ] && MODELS="$MODELS groq/llama-3.3-70b-versatile groq/openai/gpt-oss-120b"
-          [ -n "$OPENROUTER_API_KEY" ] && MODELS="$MODELS openrouter/deepseek/deepseek-chat-v3-0324:free openrouter/qwen/qwen3-coder:free"
+          if [ -n "$OPENROUTER_API_KEY" ]; then
+            ORM=$(curl -s --max-time 30 https://openrouter.ai/api/v1/models | python3 -c "
+          import sys,json
+          try: d=json.load(sys.stdin)['data']
+          except Exception: d=[]
+          pref=['coder','qwen','deepseek','gpt-oss','glm','llama','kimi','mistral','gemma']
+          f=[m for m in d if m['id'].endswith(':free') and (m.get('context_length') or 0)>=60000 and not any(x in m['id'] for x in ('vl','vision','embed','guard','image'))]
+          f.sort(key=lambda m:(min([i for i,x in enumerate(pref) if x in m['id']] or [99]),-(m.get('context_length') or 0)))
+          print(' '.join('openrouter/'+m['id'] for m in f[:4]))
+          ")
+            MODELS="$MODELS $ORM"
+          fi
           : > /tmp/log.txt
           echo '.aider*' >> .git/info/exclude
           for M in $MODELS; do
