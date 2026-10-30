@@ -1,9 +1,10 @@
-/* Daily Ruqyah — হাদিস পর্দা (#hadith): আরবি + বাংলা হাদীস সার্চ।
+/* নোট: ডেটা-ফাইলের নাম .json হলেও ভেতরে gzip থাকে (Android বিল্ড .gz নামের ফাইল নিজে খুলে এক্সটেনশন কেটে দেয়, তাই .gz নাম ব্যবহার করা যাবে না); getJson() প্রথম বাইট দেখে gzip/সাধারণ দুটোই পড়ে।
+   Daily Ruqyah — হাদিস পর্দা (#hadith): আরবি + বাংলা হাদীস সার্চ।
    ডেটা: data/hadith-chunks/ (বুখারী, মুসলিম, আবূ দাউদ, তিরমিযী, নাসাঈ, ইবনু মাজাহ, মালিক, নাবাবী ৪০, কুদসী ৪০ — ৩৬,১৪৬ হাদীস)।
    শব্দের রূপ: data/hadith-norm.js (ডেটা বানানোর সময়ের সাথে হুবহু এক থাকতে হবে)। প্রথমবার পর্দাটি খুললে তৈরি হয়। */
 (function () {
   "use strict";
-  var DV = "1";
+  var DV = "2";
   var D = new URL("data/hadith-chunks/", document.baseURI).href;
   var PAGE = 10;
   var $ = function (i) { return document.getElementById(i); };
@@ -73,10 +74,10 @@
       if (META) return Promise.resolve(META);
       return load("meta.json").then(function (m) { META = m; return m; });
     }
-    function chunkOf(id) { return load("t/" + Math.floor(id / META.chunk) + ".json.gz"); }
+    function chunkOf(id) { return load("t/" + Math.floor(id / META.chunk) + ".json"); }
     async function recOf(id) { var c = await chunkOf(id); return c[id % META.chunk]; }
     async function postings(w) {
-      var sh = await load("i/" + N.shard(w) + ".json.gz");
+      var sh = await load("i/" + N.shard(w) + ".json");
       var d = sh[w];
       if (!d) return [];
       var out = new Array(d.length), p = 0;
