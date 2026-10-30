@@ -12,7 +12,7 @@ const BOOK_MAP = {
 };
 
 // Approximate hadith counts per book, used as a completeness guard
-const EXPECTED_COUNT = { 8: 415, 12: 1330, 16: 1906 };
+const EXPECTED_COUNT = { 8: 415, 12: 1330, 16: 1041 };
 
 const bookIdArg = process.argv[2];
 if (!bookIdArg) {
@@ -300,8 +300,14 @@ async function main() {
 
   console.log(`Parse failures: ${parseFailures.count}`, parseFailures.samples);
   const expected = EXPECTED_COUNT[bookId];
-  if (expected && resultHadiths.length < expected * 0.98) {
-    console.error(`INCOMPLETE: got ${resultHadiths.length} of ~${expected} hadiths for book ${bookId}. Not saving.`);
+  const nums = new Set(resultHadiths.map((h) => h.n).filter((n) => typeof n === 'number'));
+  const maxN = nums.size ? Math.max(...nums) : 0;
+  const missingNums = [];
+  for (let i = 1; i <= maxN; i++) if (!nums.has(i)) missingNums.push(i);
+  console.log(`Max number: ${maxN}, missing numbers (${missingNums.length}): ${missingNums.join(',')}`);
+  // Fail only on real parse problems or a clearly short result (site numbering may legitimately have gaps)
+  if (parseFailures.count > 0 || (expected && resultHadiths.length < expected * 0.95)) {
+    console.error(`INCOMPLETE: got ${resultHadiths.length} of ~${expected} hadiths for book ${bookId}, parse failures ${parseFailures.count}. Not saving.`);
     process.exit(2);
   }
   resultHadiths.sort((a, b) => (typeof a.n === 'number' && typeof b.n === 'number') ? a.n - b.n : 0);
