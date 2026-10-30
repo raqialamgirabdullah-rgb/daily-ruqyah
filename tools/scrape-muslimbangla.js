@@ -252,8 +252,16 @@ async function main() {
     cp++;
   }
 
-  const sortedChapters = Array.from(chapterIds);
+  let sortedChapters = Array.from(chapterIds);
   console.log(`Found ${sortedChapters.length} chapter(s) for book ${bookId}.`);
+  // Optional sharding: SHARD="i/N" (1-based). Each shard takes every N-th chapter; shards are merged by tools/merge-shards.js
+  const shardMatch = /^(\d+)\/(\d+)$/.exec(process.env.SHARD || '');
+  let shard = null;
+  if (shardMatch) {
+    shard = { i: parseInt(shardMatch[1], 10), n: parseInt(shardMatch[2], 10) };
+    sortedChapters = sortedChapters.filter((_, idx) => idx % shard.n === shard.i - 1);
+    console.log(`Shard ${shard.i}/${shard.n}: handling ${sortedChapters.length} chapter(s).`);
+  }
 
   const hadithMap = new Map();
 
@@ -299,7 +307,7 @@ async function main() {
   console.log(`Empty bn count: ${emptyBnCount}, Empty ar count: ${emptyArCount}, Corrupt refs: ${corruptCount}`);
 
   console.log(`Parse failures: ${parseFailures.count}`, parseFailures.samples);
-  const expected = EXPECTED_COUNT[bookId];
+  const expected = shard ? undefined : EXPECTED_COUNT[bookId];
   const nums = new Set(resultHadiths.map((h) => h.n).filter((n) => typeof n === 'number'));
   const maxN = nums.size ? Math.max(...nums) : 0;
   const missingNums = [];
@@ -323,7 +331,7 @@ async function main() {
     hadiths: resultHadiths
   };
 
-  const outFile = path.join(outDir, `${bookId}-${bookInfo.k}.json`);
+  const outFile = path.join(outDir, shard ? `${bookId}-${bookInfo.k}.part${shard.i}of${shard.n}.json` : `${bookId}-${bookInfo.k}.json`);
   fs.writeFileSync(outFile, JSON.stringify(outputData, null, 2), 'utf8');
   console.log(`Saved output to ${outFile}`);
 }
