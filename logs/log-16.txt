@@ -1,0 +1,72 @@
+Starting scraper for Book 16 (রিয়াযুস সালিহীন)...
+Checked robots.txt successfully. Content preview:
+User-agent: *       Allow: /       Disallow: /admin/       Disallow: /api/       Disallow: /_next/       Disallow: /private/       Disallow: /dashboar
+Fetching: https://muslimbangla.com/hadith-book/16/chapters
+Found 9 chapter(s) for book 16.
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/390
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/390?page=2
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/390?page=3
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/390?page=4
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/390?page=5
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/390?page=6
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/390?page=7
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/390?page=8
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/390?page=9
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/390?page=10
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/390?page=11
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/390?page=12
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/390?page=13
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/390?page=14
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/390?page=15
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/390?page=16
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/390?page=17
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/390?page=18
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/390?page=19
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/390?page=20
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/390?page=21
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/390?page=22
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/390?page=23
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/390?page=24
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/390?page=25
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/390?page=26
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/390?page=27
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/390?page=28
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/390?page=29
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/390?page=30
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/390?page=31
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/390?page=32
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/390?page=33
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/390?page=34
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/572
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/572?page=2
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/572?page=3
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/573
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/573?page=2
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/573?page=3
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/574
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/574?page=2
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/575
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/575?page=2
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/576
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/576?page=2
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/576?page=3
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/577
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/577?page=2
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/577?page=3
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/577?page=4
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/578
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/578?page=2
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/579
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/579?page=2
+Fetching: https://muslimbangla.com/hadith-book/16/chapter/579?page=3
+Total unique hadiths collected for Book 16: 1022
+Empty bn count: 0, Empty ar count: 0, Corrupt refs: 0
+Parse failures: 11 [
+  "Expected ',' or '}' after property value in JSON at position 6175",
+  "Expected ',' or '}' after property value in JSON at position 797",
+  "Expected ',' or '}' after property value in JSON at position 685",
+  "Expected ',' or '}' after property value in JSON at position 1130",
+  "Expected ',' or '}' after property value in JSON at position 1080"
+]
+INCOMPLETE: got 1022 of ~1906 hadiths for book 16. Not saving.
+exit=2

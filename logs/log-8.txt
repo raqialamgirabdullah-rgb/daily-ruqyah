@@ -1,0 +1,37 @@
+Starting scraper for Book 8 (শামাঈলে তিরমিযী)...
+Checked robots.txt successfully. Content preview:
+User-agent: *       Allow: /       Disallow: /admin/       Disallow: /api/       Disallow: /_next/       Disallow: /private/       Disallow: /dashboar
+Fetching: https://muslimbangla.com/hadith-book/8/chapters
+Found 2 chapter(s) for book 8.
+Fetching: https://muslimbangla.com/hadith-book/8/chapter/420
+Fetching: https://muslimbangla.com/hadith-book/8/chapter/420?page=2
+Fetching: https://muslimbangla.com/hadith-book/8/chapter/420?page=3
+Fetching: https://muslimbangla.com/hadith-book/8/chapter/420?page=4
+Fetching: https://muslimbangla.com/hadith-book/8/chapter/420?page=5
+Fetching: https://muslimbangla.com/hadith-book/8/chapter/420?page=6
+Fetching: https://muslimbangla.com/hadith-book/8/chapter/420?page=7
+Fetching: https://muslimbangla.com/hadith-book/8/chapter/420?page=8
+Fetching: https://muslimbangla.com/hadith-book/8/chapter/420?page=9
+Fetching: https://muslimbangla.com/hadith-book/8/chapter/420?page=10
+Fetching: https://muslimbangla.com/hadith-book/8/chapter/420?page=11
+Fetching: https://muslimbangla.com/hadith-book/8/chapter/420?page=12
+Fetching: https://muslimbangla.com/hadith-book/8/chapter/420?page=13
+Fetching: https://muslimbangla.com/hadith-book/8/chapter/420?page=14
+Fetching: https://muslimbangla.com/hadith-book/8/chapter/420?page=15
+Fetching: https://muslimbangla.com/hadith-book/8/chapter/420?page=16
+Fetching: https://muslimbangla.com/hadith-book/8/chapter/420?page=17
+Fetching: https://muslimbangla.com/hadith-book/8/chapter/420?page=18
+Fetching: https://muslimbangla.com/hadith-book/8/chapter/420?page=19
+Fetching: https://muslimbangla.com/hadith-book/8/chapter/420?page=20
+Fetching: https://muslimbangla.com/hadith-book/8/chapter/419
+Total unique hadiths collected for Book 8: 388
+Empty bn count: 0, Empty ar count: 0, Corrupt refs: 0
+Parse failures: 7 [
+  "Expected ',' or '}' after property value in JSON at position 3257",
+  "Expected ',' or '}' after property value in JSON at position 2933",
+  "Expected ',' or '}' after property value in JSON at position 634",
+  "Expected ',' or '}' after property value in JSON at position 941",
+  "Expected ',' or '}' after property value in JSON at position 2233"
+]
+INCOMPLETE: got 388 of ~415 hadiths for book 8. Not saving.
+exit=2
