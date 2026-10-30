@@ -591,7 +591,7 @@ let RG=0;
 function renderReader(mode,s){const g=++RG,rd=$("drReader");GEN++;rd.innerHTML="";rd.appendChild(readerTop(mode,s));const body=el("div","dr-rbody");rd.appendChild(body);if(!s)surahList(body,mode);else surahView(body,mode,s,g)}
 function drShell(){
  setFs(+lsGet("drFs","26")||26);
- const side=$("drSide"),scrim=$("drScrim"),menu=$("drMenu"),box=$("rsBox"),rd=$("drReader");
+ const side=$("drSide"),scrim=$("drScrim"),menu=$("drMenu"),box=$("rsBox"),rd=$("drReader"),hd=$("drHadith");
  const open=on=>{side.classList.toggle("on",on);scrim.classList.toggle("on",on);document.body.classList.toggle("dr-lock",on);side.setAttribute("aria-hidden",on?"false":"true");menu.setAttribute("aria-expanded",on?"true":"false")};
  menu.onclick=()=>open(true);$("drClose").onclick=scrim.onclick=()=>open(false);
  document.addEventListener("keydown",e=>{if(e.key==="Escape")open(false)});
@@ -600,8 +600,9 @@ function drShell(){
  const route=()=>{open(false);const h=(location.hash||"#search").replace(/^#/,""),p=h.split("/");
   document.querySelectorAll("audio").forEach(a=>{try{a.pause()}catch(e){}});
   let key="search";
-  if(p[0]==="read"&&RMODES.some(m=>m[0]===p[1])){key="read/"+p[1];const s=+p[2]||0;box.hidden=true;rd.hidden=false;renderReader(p[1],s>=1&&s<=114?s:0);window.scrollTo(0,0)}
-  else{rd.hidden=true;box.hidden=false;RG++;if(p[0]==="topics"){key="topics";SHOWT&&SHOWT(true);window.scrollTo(0,0)}else if(prev.startsWith("read/")||prev==="")window.scrollTo(0,0)}
+  if(p[0]==="read"&&RMODES.some(m=>m[0]===p[1])){key="read/"+p[1];const s=+p[2]||0;hd.hidden=true;box.hidden=true;rd.hidden=false;renderReader(p[1],s>=1&&s<=114?s:0);window.scrollTo(0,0)}
+  else if(p[0]==="hadith"){key="hadith";rd.hidden=true;box.hidden=true;hd.hidden=false;RG++;window.DRHadith&&window.DRHadith.open();if(prev!=="hadith")window.scrollTo(0,0)}
+  else{hd.hidden=true;rd.hidden=true;box.hidden=false;RG++;if(p[0]==="topics"){key="topics";SHOWT&&SHOWT(true);window.scrollTo(0,0)}else if(prev.startsWith("read/")||prev==="")window.scrollTo(0,0)}
   prev=key;navs.forEach(a=>a.classList.toggle("on",a.dataset.nav===key))};
  navs.forEach(a=>a.addEventListener("click",e=>{e.preventDefault();const h=a.getAttribute("href");if(location.hash===h)route();else location.hash=h;open(false)}));
  addEventListener("hashchange",route);

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Daily Ruqyah</title>
-<meta name="description" content="Daily Ruqyah — কুরআনের আয়াত খোঁজা, বিষয়ভিত্তিক ও রোগ অনুযায়ী আয়াত, সম্পূর্ণ কুরআন পাঠ, অডিও ও কপি">
+<meta name="description" content="Daily Ruqyah — কুরআনের আয়াত খোঁজা, বিষয়ভিত্তিক ও রোগ অনুযায়ী আয়াত, সম্পূর্ণ কুরআন পাঠ, হাদিস সার্চ, অডিও ও কপি">
 <meta name="theme-color" content="#073b2e">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
@@ -12,7 +12,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Daily Ruqyah">
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 <header class="dr-bar">
@@ -35,13 +35,15 @@
  <a class="dr-nav" href="#read/bn" data-nav="read/bn"><i>বা</i><span>কুরআন বাংলা অনুবাদ</span></a>
  <a class="dr-nav" href="#read/arbn" data-nav="read/arbn"><i class="ar">عب</i><span>আরবি ও বাংলা অনুবাদসহ</span></a>
  <a class="dr-nav" href="#read/word" data-nav="read/word"><i>⋯</i><span>শব্দে শব্দে কুরআন</span></a>
+ <div class="dr-side-sec">হাদিস</div>
+ <a class="dr-nav" href="#hadith" data-nav="hadith"><i>📜</i><span>হাদিস খুঁজুন</span></a>
  <div class="dr-side-sec">অ্যাপ</div>
  <div class="dr-upd">
   <div class="dr-upd-v" id="drVer">সংস্করণ …</div>
   <button class="dr-upd-b" id="drUpdBtn" type="button">আপডেট খুঁজুন</button>
   <div class="dr-upd-m" id="drUpdMsg"></div>
  </div>
- <div class="dr-side-foot">আয়াত ও অর্থের উৎস: Tanzil, Quranic Arabic Corpus ও অন্যান্য — বিবরণ <a href="QURAN-DATA-NOTICE.md">QURAN-DATA-NOTICE.md</a>-এ। গবেষণার তথ্য, ফতোয়া বা চিকিৎসার বিকল্প নয়।</div>
+ <div class="dr-side-foot">আয়াত ও অর্থের উৎস: Tanzil, Quranic Arabic Corpus ও অন্যান্য; হাদিস: fawazahmed0/hadith-api — বিবরণ <a href="QURAN-DATA-NOTICE.md">QURAN-DATA-NOTICE.md</a> ও <a href="HADITH-DATA-NOTICE.md">HADITH-DATA-NOTICE.md</a>-এ। গবেষণার তথ্য, ফতোয়া বা চিকিৎসার বিকল্প নয়।</div>
 </nav>
 <div class="dr-ban" id="drBan" hidden><span id="drBanTx"></span><button type="button" id="drBanBtn">আপডেট</button></div>
 <main class="dr-main">
@@ -55,9 +57,12 @@
  <div id="rsOut"></div>
 </div>
 <div class="rs-box dr-reader" id="drReader" hidden></div>
+<div class="rs-box dr-hadith" id="drHadith" hidden></div>
 </main>
-<div class="dr-foot">আয়াত ও অর্থের উৎস: Tanzil, Quranic Arabic Corpus ও অন্যান্য — বিবরণ <a href="QURAN-DATA-NOTICE.md">QURAN-DATA-NOTICE.md</a>-এ। গবেষণার তথ্য, ফতোয়া বা চিকিৎসার বিকল্প নয়।</div>
-<script src="app.js?v=3"></script>
-<script src="boot.js?v=3"></script>
+<div class="dr-foot">আয়াত ও অর্থের উৎস: Tanzil, Quranic Arabic Corpus ও অন্যান্য; হাদিস: fawazahmed0/hadith-api — বিবরণ <a href="QURAN-DATA-NOTICE.md">QURAN-DATA-NOTICE.md</a> ও <a href="HADITH-DATA-NOTICE.md">HADITH-DATA-NOTICE.md</a>-এ। গবেষণার তথ্য, ফতোয়া বা চিকিৎসার বিকল্প নয়।</div>
+<script src="data/hadith-norm.js?v=1"></script>
+<script src="data/hadith.js?v=1"></script>
+<script src="app.js?v=4"></script>
+<script src="boot.js?v=4"></script>
 </body>
 </html>
