@@ -162,7 +162,7 @@ function parseChapterPage(html) {
     } catch (e) {}
   }
 
-  const unescaped = unescapeUnicode(fullPayload.replace(/\\"/g, '"').replace(/\\\\/g, '\\'));
+  const unescaped = fullPayload; // already JSON-decoded once via JSON.parse(arr[1]); keep \" inside strings intact
   const flightMap = extractFlightMap(unescaped);
 
   let totalPages = 1;
@@ -223,7 +223,7 @@ function extractCombinedFlightPayload(html) {
       }
     } catch (e) {}
   }
-  return unescapeUnicode(fullPayload.replace(/\\"/g, '"').replace(/\\\\/g, '\\'));
+  return fullPayload;
 }
 
 async function main() {
