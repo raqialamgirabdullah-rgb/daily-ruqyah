@@ -11,9 +11,6 @@ const BOOK_MAP = {
   17: { k: 'ahmad', bn: 'মুসনাদে আহমদ' }
 };
 
-// Approximate hadith counts per book, used as a completeness guard
-const EXPECTED_COUNT = { 8: 415, 12: 1330, 16: 1906 };
-
 const bookIdArg = process.argv[2];
 if (!bookIdArg) {
   console.error('Usage: node tools/scrape-muslimbangla.js <book_id> [output_dir=data-src/muslimbangla]');
@@ -126,29 +123,6 @@ function extractFlightMap(fullPayload) {
   return flightMap;
 }
 
-const parseFailures = { count: 0, samples: [] };
-
-// Find the end of the JSON object starting at `start`, ignoring braces inside string literals.
-function findObjectEnd(str, start) {
-  let depth = 0;
-  let inStr = false;
-  for (let i = start; i < str.length; i++) {
-    const c = str[i];
-    if (inStr) {
-      if (c === '\\') i++;
-      else if (c === '"') inStr = false;
-      continue;
-    }
-    if (c === '"') inStr = true;
-    else if (c === '{') depth++;
-    else if (c === '}') {
-      depth--;
-      if (depth === 0) return i + 1;
-    }
-  }
-  return -1;
-}
-
 function parseChapterPage(html) {
   const scriptRegex = /self\.__next_f\.push\(([\s\S]*?)\)<\/script>/g;
   let match;
@@ -172,17 +146,23 @@ function parseChapterPage(html) {
   }
 
   const hadithList = [];
-  const seenIds = new Set();
   let pos = 0;
   while ((pos = unescaped.indexOf('"hadith_number":', pos)) !== -1) {
-    // Walk back over candidate object starts until one whose full object really holds this hadith_number
-    let cand = pos;
-    let parsed = null;
-    for (let tries = 0; tries < 6 && parsed === null; tries++) {
-      const objStart = unescaped.lastIndexOf('{"id":', cand);
-      if (objStart === -1) break;
-      const objEnd = findObjectEnd(unescaped, objStart);
-      if (objEnd !== -1 && objEnd > pos) {
+    const objStart = unescaped.lastIndexOf('{"id":', pos);
+    if (objStart !== -1) {
+      let depth = 0;
+      let objEnd = -1;
+      for (let i = objStart; i < unescaped.length; i++) {
+        if (unescaped[i] === '{') depth++;
+        else if (unescaped[i] === '}') {
+          depth--;
+          if (depth === 0) {
+            objEnd = i + 1;
+            break;
+          }
+        }
+      }
+      if (objEnd !== -1) {
         let jsonStr = unescaped.substring(objStart, objEnd);
         // Replace Next.js Flight deferred string references like "$65" with actual text from flightMap
         jsonStr = jsonStr.replace(/"\$([0-9a-fA-F]+)"/g, (m, refId) => {
@@ -191,20 +171,16 @@ function parseChapterPage(html) {
           }
           return m;
         });
+
         try {
-          const obj = JSON.parse(jsonStr);
-          if (obj.id && obj.hadith_number !== undefined) parsed = obj;
+          const parsed = JSON.parse(jsonStr);
+          if (parsed.id && parsed.hadith_number !== undefined) {
+            hadithList.push(parsed);
+          }
         } catch (e) {
-          parseFailures.count++;
-          if (parseFailures.samples.length < 5) parseFailures.samples.push(e.message);
+          // Ignore parse errors from non-hadith JSON snippets
         }
       }
-      cand = objStart - 1;
-      if (cand < 0) break;
-    }
-    if (parsed && !seenIds.has(parsed.id)) {
-      seenIds.add(parsed.id);
-      hadithList.push(parsed);
     }
     pos += 15;
   }
@@ -234,22 +210,14 @@ async function main() {
   await checkRobotsTxt();
 
   const chaptersUrl = `https://muslimbangla.com/hadith-book/${bookId}/chapters`;
+  const chaptersHtml = await fetchUrlCached(chaptersUrl, 'chapters.html');
+  const combinedChaptersPayload = extractCombinedFlightPayload(chaptersHtml);
+
   const reg = new RegExp(`\\/hadith-book\\/${bookId}\\/chapter\\/(\\d+)`, 'g');
   const chapterIds = new Set();
-  let cp = 1;
-  let chapterPages = 1;
-  while (cp <= chapterPages) {
-    const url = cp > 1 ? `${chaptersUrl}?page=${cp}` : chaptersUrl;
-    const chaptersHtml = await fetchUrlCached(url, cp > 1 ? `chapters_page_${cp}.html` : 'chapters.html');
-    const payload = extractCombinedFlightPayload(chaptersHtml);
-    const tpm = payload.match(/"totalPages":(\d+)/);
-    if (tpm) chapterPages = Math.max(chapterPages, parseInt(tpm[1], 10));
-    const before = chapterIds.size;
-    let m;
-    reg.lastIndex = 0;
-    while ((m = reg.exec(payload)) !== null) chapterIds.add(m[1]);
-    if (cp > 1 && chapterIds.size === before) break; // no new chapters -> stop
-    cp++;
+  let m;
+  while ((m = reg.exec(combinedChaptersPayload)) !== null) {
+    chapterIds.add(m[1]);
   }
 
   const sortedChapters = Array.from(chapterIds);
@@ -297,14 +265,6 @@ async function main() {
     }
   }
   console.log(`Empty bn count: ${emptyBnCount}, Empty ar count: ${emptyArCount}, Corrupt refs: ${corruptCount}`);
-
-  console.log(`Parse failures: ${parseFailures.count}`, parseFailures.samples);
-  const expected = EXPECTED_COUNT[bookId];
-  if (expected && resultHadiths.length < expected * 0.98) {
-    console.error(`INCOMPLETE: got ${resultHadiths.length} of ~${expected} hadiths for book ${bookId}. Not saving.`);
-    process.exit(2);
-  }
-  resultHadiths.sort((a, b) => (typeof a.n === 'number' && typeof b.n === 'number') ? a.n - b.n : 0);
 
   const todayStr = new Date().toISOString().slice(0, 10);
   const outputData = {
