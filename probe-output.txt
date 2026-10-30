@@ -1,182 +1,115 @@
-=================== https://hadithbd.com
-HOME: 403 https://hadithbd.com/ size=5413
---- robots.txt
-# robots.txt for hadithbd.com
-
-# === Block Bad Bots / Scrapers ===
-User-agent: SemrushBot
-Disallow: /
-
-User-agent: AhrefsBot
-Disallow: /
-
-User-agent: MJ12bot
-Disallow: /
-
-User-agent: DotBot
-Disallow: /
-
-User-agent: PetalBot
-Disallow: /
-
-User-agent: Bytespider
-Disallow: /
-
-User-agent: GPTBot
-Disallow: /
-
-User-agent: ClaudeBot
-Disallow: /
-
-User-agent: DataForSeoBot
-Disallow: /
-
---- title
-<title>Just a moment...
---- links (unique, first 70)
-=================== https://www.hadithbd.com
-HOME: 403 https://www.hadithbd.com/ size=5439
---- robots.txt
-# robots.txt for hadithbd.com
-
-# === Block Bad Bots / Scrapers ===
-User-agent: SemrushBot
-Disallow: /
-
-User-agent: AhrefsBot
-Disallow: /
-
-User-agent: MJ12bot
-Disallow: /
-
-User-agent: DotBot
-Disallow: /
-
-User-agent: PetalBot
-Disallow: /
-
-User-agent: Bytespider
-Disallow: /
-
-User-agent: GPTBot
-Disallow: /
-
-User-agent: ClaudeBot
-Disallow: /
-
-User-agent: DataForSeoBot
-Disallow: /
-
---- title
-<title>Just a moment...
---- links (unique, first 70)
-=================== https://muslimbangla.com
-HOME: 200 https://muslimbangla.com/ size=197118
---- robots.txt
-User-agent: *
-      Allow: /
-      Disallow: /admin/
-      Disallow: /api/
-      Disallow: /_next/
-      Disallow: /private/
-      Disallow: /dashboard/
-      Disallow: /user/
-
-      Sitemap: https://muslimbangla.com/sitemap.xml--- title
-<title>সবচেয়ে সমৃদ্ধ ইসলামিক অ্যাপ | মুসলিম বাংলা
---- links (unique, first 70)
-href="/"
-href="/_next/static/chunks/3276ee5d218078c5.css"
-href="/_next/static/chunks/71533b14f45d26f1.css"
-href="/_next/static/chunks/843e5cff93f8c310.js"
-href="/articles"
-href="/book"
-href="/cdn-cgi/l/email-protection#2a475f59464347484b444d464b044b5a5a6a4d474b434604494547"
-href="/clear-storage/cookie"
-href="/donation"
-href="/download"
-href="/download-modal.jpg"
-href="/dua-categories"
-href="/favicon.ico?favicon.28abdd2d.ico"
+##### TERMS
+ মুসলিম বাংলা কুরআন হাদীস নামাজের সময় নামাজ শিক্ষা মাসায়েল দু'আ প্রবন্ধ বিবাহ অন্যান্য ডোনেশন ডাউনলোড শর্তাবলি السَّلَامُ عَلَيكُمْ وَرَحمَةُ اللّٰهِ وَبَرَكَاتُه মুহতারাম, মুসলিম বাংলা প্লাটফর্মের প্রতিটি খিদমাত উম্মাহর সর্বস্তরের মানুষের জন্য উন্মুক্ত করে দেওয়া হয়েছে। যাতে অনলাইন ও অফলাইন—উভয় মাধ্যমেই মানুষ দ্বীনি ইলম সহজে আহরণ করতে পারে। উম্মুক্ত রাখার উদ্দেশ্য হলো, নবী করীম ﷺ বর্ণিত ইলম গোপন করার ভয়াবহতা থেকে বাঁচা—যেখানে হুঁশিয়ারি দিয়ে বলা হয়েছে কিয়ামতের দিনে ইলম গোপনকারীর মুখে আগুনের লাগাম পরানো হবে। তবে এতদসত্ত্বেও, যদি কেউ মুসলিম বাংলার প্লাটফর্মের নিকট থেকে কোনো ধরণের ডাটা চেয়ে আবেদন করেন—তা ব্যক্তিগত বা সার্বজনীন প্রয়োজনে হোক—তাহলে মুসলিম বাংলা অত্যন্ত বিনয়ের সাথে বলতে চাইবে, এসব ডাটা মুসলিম বাংলা প্লাটফর্মে উম্মুক্ত আছে। মুসলিম বাংলা এটাকেই যথেষ্ট মনে করে। সুতরাং, কোনো ডাটা আলাদা করে না পাওয়ার কারণে মনক্ষুণ্ণ না হয়ে, অনুগ্রহ করে মুসলিম বাংলার উন্মুক্ত প্রতিটি সেকশন থেকে যথাসম্ভব উপকার ও ফায়দা অর্জনের চেষ্টা চালিয়ে যাওয়া কাম্য। আল্লাহ তাআলা আমাদের সকলকে খালেস নিয়তে দ্বীনের খিদমাত আঞ্জাম দেয়ার তাওফিক দান করুন। আমীন। সাদাকায়ে জারিয়াহ মুসলিম বাংলার সাথী হোন আপনার সাদাকাহর মাধ্যমে মুসলিম বাংলার অগ্রযাত্রার সাথী হোন। ডোনেশন করুন মুসলিম বাংলা বাংলাদেশের সকল শহর, জেলা, উপজেলা এমনকি ইন্টারনেট বিহীন প্রত্যন্ত গ্রামে পর্যন্ত ব্যবহার উপযোগী। বাংলাদেশের বাইরে কলকাতা, দুবাই, সৌদি আরব, কাতার, কুয়
+##### SITEMAP index
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://muslimbangla.com</loc>
+    <lastmod>2026-10-15T12:33:55.117Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://muslimbangla.com/today</loc>
+    <lastmod>2026-10-15T12:33:55.117Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://muslimbangla.com/quran</loc>
+    <lastmod>2026-10-15T12:33:55.117Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://muslimbangla.com/hadith</loc>
+    <lastmod>2026-10-15T12:33:55.117Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://muslimbangla.com/dua</loc>
+    <lastmod>2026-10-15T12:33:55.117Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://muslimbangla.com/prayer-times</loc>
+    <lastmod>2026-10-15T12:33:55.117Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://muslimbangla.com/lectures</loc>
+    <lastmod>2026-10-15T12:33:55.117Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://muslimbangla.com/article</loc>
+    <lastmod>2026-10-15T12:33:55.117Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priori
+##### /hadith-books links
+href="/hadith-book-description/1/সহীহ বুখারী"
+href="/hadith-book-description/10/মুসনাদে আবু হানীফা রহঃ"
+href="/hadith-book-description/1047/আত্-তারগীব ওয়াত্-তারহীব"
+href="/hadith-book-description/1048/সহীফায়ে হাম্মাম ইবনে মুনাব্বিহ"
+href="/hadith-book-description/1050/হাদীসে কুদসী"
+href="/hadith-book-description/1051/মা&#x27;আরিফুল হাদীস"
+href="/hadith-book-description/11/আল মুওয়াত্তা-ইমাম মুহাম্মাদ রহঃ"
+href="/hadith-book-description/12/আল-আদাবুল মুফরাদ"
+href="/hadith-book-description/13/মিশকাতুল মাসাবীহ"
+href="/hadith-book-description/14/ফিকহুস সুনান"
+href="/hadith-book-description/15/আখলাকুন্নবী (ﷺ)"
+href="/hadith-book-description/16/রিয়াযুস সালিহীন"
+href="/hadith-book-description/17/মুসনাদে আহমদ- ইমাম আহমদ রহঃ"
+href="/hadith-book-description/2/সহীহ মুসলিম"
+href="/hadith-book-description/3/জামে&#x27; তিরমিযী"
+href="/hadith-book-description/4/সুনানে আবু দাউদ"
+href="/hadith-book-description/5/সুনানে নাসায়ী"
+href="/hadith-book-description/6/সুনানে ইবনে মাজা"
+href="/hadith-book-description/7/মুওয়াত্তা মালিক"
+href="/hadith-book-description/8/শামাঈলে তিরমিযী"
+href="/hadith-book-description/9/ত্বহাবী শরীফ"
+href="/hadith-book/1/chapters"
+href="/hadith-book/10/chapters"
+href="/hadith-book/1047/chapters"
+href="/hadith-book/1048/chapters"
+href="/hadith-book/1050/chapters"
+href="/hadith-book/1051/chapters"
+href="/hadith-book/11/chapters"
+href="/hadith-book/12/chapters"
+href="/hadith-book/13/chapters"
+href="/hadith-book/14/chapters"
+href="/hadith-book/15/chapters"
+href="/hadith-book/16/chapters"
+href="/hadith-book/17/chapters"
+href="/hadith-book/18/chapters"
+href="/hadith-book/2/chapters"
+href="/hadith-book/20/chapters"
+href="/hadith-book/21/chapters"
+href="/hadith-book/23/chapters"
+href="/hadith-book/24/chapters"
+href="/hadith-book/25/chapters"
+href="/hadith-book/26/chapters"
+href="/hadith-book/27/chapters"
+href="/hadith-book/28/chapters"
+href="/hadith-book/29/chapters"
+href="/hadith-book/3/chapters"
+href="/hadith-book/30/chapters"
+href="/hadith-book/31/chapters"
+href="/hadith-book/32/chapters"
+href="/hadith-book/33/chapters"
+href="/hadith-book/34/chapters"
+href="/hadith-book/4/chapters"
+href="/hadith-book/5/chapters"
+href="/hadith-book/6/chapters"
+href="/hadith-book/7/chapters"
+href="/hadith-book/8/chapters"
+href="/hadith-book/9/chapters"
 href="/hadith-books"
-href="/lectures"
-href="/masails"
-href="/others/learn-salat"
-href="/privacy-policy"
-href="/quran"
-href="/terms-conditions"
-href="/today"
-href="/user/ask-masail"
-href="/world/BD/prayer-times-Dhaka"
-href="/world/country/prayer-times-city"
-href="/zakat-calculator"
-href="https://api.whatsapp.com/send?phone=8801601761564"
-href="https://apps.apple.com/us/app/muslim-bangla-quran-salat-time/id878084956"
-href="https://apps.microsoft.com/detail/9n8mjvwgghcz?hl=bn&amp;gl=BN"
-href="https://jobs.muslimbangla.com?token="
-href="https://muslimakd.com/search?token="
-href="https://muslimakd.com?token="
-href="https://muslimbangla.com"
-href="https://muslimbangla.com/assets/img/namajersomoy-logo-social-round.png"
-href="https://muslimbangla.org?token="
-href="https://muslimponno.com"
-href="https://play.google.com/store/apps/details?id=com.tos.namajtime"
-href="https://www.facebook.com/groups/375898930686355"
-href="https://www.googletagmanager.com/gtag/js?id=G-04N3Z00DHE"
-href="https://www.youtube.com/c/MuslimBanglaOfficial"
-href="tel:+8801601761564"
-=================== https://www.muslimbangla.com
-HOME: 200 https://www.muslimbangla.com/ size=197118
---- robots.txt
-User-agent: *
-      Allow: /
-      Disallow: /admin/
-      Disallow: /api/
-      Disallow: /_next/
-      Disallow: /private/
-      Disallow: /dashboard/
-      Disallow: /user/
-
-      Sitemap: https://muslimbangla.com/sitemap.xml--- title
-<title>সবচেয়ে সমৃদ্ধ ইসলামিক অ্যাপ | মুসলিম বাংলা
---- links (unique, first 70)
-href="/"
-href="/_next/static/chunks/3276ee5d218078c5.css"
-href="/_next/static/chunks/71533b14f45d26f1.css"
-href="/_next/static/chunks/843e5cff93f8c310.js"
-href="/articles"
-href="/book"
-href="/cdn-cgi/l/email-protection#fa978f89969397989b949d969bd49b8a8aba9d979b9396d4999597"
-href="/clear-storage/cookie"
-href="/donation"
-href="/download"
-href="/download-modal.jpg"
-href="/dua-categories"
-href="/favicon.ico?favicon.28abdd2d.ico"
-href="/hadith-books"
-href="/lectures"
-href="/masails"
-href="/others/learn-salat"
-href="/privacy-policy"
-href="/quran"
-href="/terms-conditions"
-href="/today"
-href="/user/ask-masail"
-href="/world/BD/prayer-times-Dhaka"
-href="/world/country/prayer-times-city"
-href="/zakat-calculator"
-href="https://api.whatsapp.com/send?phone=8801601761564"
-href="https://apps.apple.com/us/app/muslim-bangla-quran-salat-time/id878084956"
-href="https://apps.microsoft.com/detail/9n8mjvwgghcz?hl=bn&amp;gl=BN"
-href="https://jobs.muslimbangla.com?token="
-href="https://muslimakd.com/search?token="
-href="https://muslimakd.com?token="
-href="https://muslimbangla.com"
-href="https://muslimbangla.com/assets/img/namajersomoy-logo-social-round.png"
-href="https://muslimbangla.org?token="
-href="https://muslimponno.com"
-href="https://play.google.com/store/apps/details?id=com.tos.namajtime"
-href="https://www.facebook.com/groups/375898930686355"
-href="https://www.googletagmanager.com/gtag/js?id=G-04N3Z00DHE"
-href="https://www.youtube.com/c/MuslimBanglaOfficial"
-href="tel:+8801601761564"
+href="/hadith-books?menu=books"
+href="/hadith-books?menu=topics"
+--- text
+ হাদীসের কিতাব সমূহ | মুসলিম বাংলা মুসলিম বাংলা কুরআন হাদীস নামাজের সময় নামাজ শিক্ষা মাসায়েল দু'আ প্রবন্ধ বিবাহ অন্যান্য ডোনেশন ডাউনলোড হাদীসের কিতাব সমূহ মোট কিতাব - ৩৬ টি বাংলা কিতাবভিত্তিক বিষয়ভিত্তিক রাবী বর্ণিত ১ আল জামিউস সহীহ- ইমাম বুখারী রহঃ الجامع الصحيح للبخاري ৮৩ অধ্যায় ৭০৫৩ হাদীস ২ আল মুসনাদুস সহীহ- ইমাম মুসলিম রহঃ المسند الصحيح لمسلم ৫৮ অধ্যায় ৭২৯২ হাদীস ৩ আল জামিউল কাবীর- ইমাম তিরমিযী রহঃ الجامع الكبير للترمذي ৪৮ অধ্যায় ৩৯৫৬ হাদীস ৪ কিতাবুস সুনান - ইমাম আবু দাউদ রহঃ كتاب السنن للإمام أبي داود ৩৬ অধ্যায় ৫১৮৪ হাদীস ৫ কিতাবুস সুনান (আলমুজতাবা) - ইমাম নাসায়ী রহঃ المجتبى من السنن للنسائي ৫১ �
