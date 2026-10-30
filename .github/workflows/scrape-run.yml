@@ -52,3 +52,4 @@ jobs:
           git commit -m "data: re-scraped muslimbangla books (guarded)" || echo "nothing"
           git pull --rebase origin scrape-run || true
           git push
+# rerun 1244
