@@ -26,6 +26,7 @@ jobs:
           TASK: ${{ github.event.comment.body }}
         run: |
           TASK="${TASK#/ai}"
+          TASK="$(printf '%s' "$TASK" | sed '/^---$/,$d')"
           MODELS=""
           [ -n "$GROQ_API_KEY" ] && MODELS="$MODELS groq/llama-3.3-70b-versatile groq/openai/gpt-oss-120b"
           [ -n "$OPENROUTER_API_KEY" ] && MODELS="$MODELS openrouter/deepseek/deepseek-chat-v3-0324:free openrouter/qwen/qwen3-coder:free"
@@ -34,7 +35,7 @@ jobs:
           for M in $MODELS; do
             echo "== $M" | tee -a /tmp/log.txt
             git checkout -q -- . ; git clean -fdq
-            if timeout 600 aider --model "$M" --yes-always --no-auto-commits --no-gitignore --edit-format whole --no-check-update --no-analytics --no-show-model-warnings --map-tokens 1024 --message "$TASK" >> /tmp/log.txt 2>&1 && [ -n "$(git status --porcelain)" ]; then
+            if timeout 600 aider --model "$M" --yes-always --no-auto-commits --no-gitignore --no-detect-urls --edit-format whole --no-check-update --no-analytics --no-show-model-warnings --map-tokens 1024 --message "$TASK" >> /tmp/log.txt 2>&1 && [ -n "$(git status --porcelain)" ]; then
               echo "$M" > /tmp/used.txt; break
             fi
             echo "ব্যর্থ বা কিছু বদলায়নি: $M" | tee -a /tmp/log.txt
