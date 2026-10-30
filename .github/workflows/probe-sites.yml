@@ -3,19 +3,29 @@ name: probe-sites
 on:
   push:
     branches: [probe/**]
+    paths: ['.github/workflows/probe-sites.yml']
+permissions:
+  contents: write
 jobs:
   probe:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
+      - uses: actions/checkout@v4
       - name: Probe
         run: |
           UA="Mozilla/5.0 (compatible; DailyRuqyahResearch/1.0)"
+          {
           for site in https://hadithbd.com https://www.hadithbd.com https://muslimbangla.com https://www.muslimbangla.com; do
             echo "=================== $site"
             code=$(curl -s -L -A "$UA" -o /tmp/home.html -w "%{http_code} %{url_effective} size=%{size_download}" --max-time 30 "$site/")
             echo "HOME: $code"
             echo "--- robots.txt"; curl -s -L -A "$UA" --max-time 20 "$site/robots.txt" | head -30
             echo "--- title"; grep -o '<title>[^<]*' /tmp/home.html | head -2
-            echo "--- links (unique, first 60)"; grep -o 'href="[^"]*"' /tmp/home.html | sort -u | head -60
+            echo "--- links (unique, first 70)"; grep -o 'href="[^"]*"' /tmp/home.html | sort -u | head -70
           done
+          } > probe-output.txt 2>&1
+      - name: Commit result
+        run: |
+          git config user.name "probe-bot"; git config user.email "probe-bot@users.noreply.github.com"
+          git add probe-output.txt && git commit -m "probe: ফলাফল" && git push
