@@ -1,0 +1,182 @@
+=================== https://hadithbd.com
+HOME: 403 https://hadithbd.com/ size=5413
+--- robots.txt
+# robots.txt for hadithbd.com
+
+# === Block Bad Bots / Scrapers ===
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+--- title
+<title>Just a moment...
+--- links (unique, first 70)
+=================== https://www.hadithbd.com
+HOME: 403 https://www.hadithbd.com/ size=5439
+--- robots.txt
+# robots.txt for hadithbd.com
+
+# === Block Bad Bots / Scrapers ===
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+--- title
+<title>Just a moment...
+--- links (unique, first 70)
+=================== https://muslimbangla.com
+HOME: 200 https://muslimbangla.com/ size=197118
+--- robots.txt
+User-agent: *
+      Allow: /
+      Disallow: /admin/
+      Disallow: /api/
+      Disallow: /_next/
+      Disallow: /private/
+      Disallow: /dashboard/
+      Disallow: /user/
+
+      Sitemap: https://muslimbangla.com/sitemap.xml--- title
+<title>সবচেয়ে সমৃদ্ধ ইসলামিক অ্যাপ | মুসলিম বাংলা
+--- links (unique, first 70)
+href="/"
+href="/_next/static/chunks/3276ee5d218078c5.css"
+href="/_next/static/chunks/71533b14f45d26f1.css"
+href="/_next/static/chunks/843e5cff93f8c310.js"
+href="/articles"
+href="/book"
+href="/cdn-cgi/l/email-protection#2a475f59464347484b444d464b044b5a5a6a4d474b434604494547"
+href="/clear-storage/cookie"
+href="/donation"
+href="/download"
+href="/download-modal.jpg"
+href="/dua-categories"
+href="/favicon.ico?favicon.28abdd2d.ico"
+href="/hadith-books"
+href="/lectures"
+href="/masails"
+href="/others/learn-salat"
+href="/privacy-policy"
+href="/quran"
+href="/terms-conditions"
+href="/today"
+href="/user/ask-masail"
+href="/world/BD/prayer-times-Dhaka"
+href="/world/country/prayer-times-city"
+href="/zakat-calculator"
+href="https://api.whatsapp.com/send?phone=8801601761564"
+href="https://apps.apple.com/us/app/muslim-bangla-quran-salat-time/id878084956"
+href="https://apps.microsoft.com/detail/9n8mjvwgghcz?hl=bn&amp;gl=BN"
+href="https://jobs.muslimbangla.com?token="
+href="https://muslimakd.com/search?token="
+href="https://muslimakd.com?token="
+href="https://muslimbangla.com"
+href="https://muslimbangla.com/assets/img/namajersomoy-logo-social-round.png"
+href="https://muslimbangla.org?token="
+href="https://muslimponno.com"
+href="https://play.google.com/store/apps/details?id=com.tos.namajtime"
+href="https://www.facebook.com/groups/375898930686355"
+href="https://www.googletagmanager.com/gtag/js?id=G-04N3Z00DHE"
+href="https://www.youtube.com/c/MuslimBanglaOfficial"
+href="tel:+8801601761564"
+=================== https://www.muslimbangla.com
+HOME: 200 https://www.muslimbangla.com/ size=197118
+--- robots.txt
+User-agent: *
+      Allow: /
+      Disallow: /admin/
+      Disallow: /api/
+      Disallow: /_next/
+      Disallow: /private/
+      Disallow: /dashboard/
+      Disallow: /user/
+
+      Sitemap: https://muslimbangla.com/sitemap.xml--- title
+<title>সবচেয়ে সমৃদ্ধ ইসলামিক অ্যাপ | মুসলিম বাংলা
+--- links (unique, first 70)
+href="/"
+href="/_next/static/chunks/3276ee5d218078c5.css"
+href="/_next/static/chunks/71533b14f45d26f1.css"
+href="/_next/static/chunks/843e5cff93f8c310.js"
+href="/articles"
+href="/book"
+href="/cdn-cgi/l/email-protection#fa978f89969397989b949d969bd49b8a8aba9d979b9396d4999597"
+href="/clear-storage/cookie"
+href="/donation"
+href="/download"
+href="/download-modal.jpg"
+href="/dua-categories"
+href="/favicon.ico?favicon.28abdd2d.ico"
+href="/hadith-books"
+href="/lectures"
+href="/masails"
+href="/others/learn-salat"
+href="/privacy-policy"
+href="/quran"
+href="/terms-conditions"
+href="/today"
+href="/user/ask-masail"
+href="/world/BD/prayer-times-Dhaka"
+href="/world/country/prayer-times-city"
+href="/zakat-calculator"
+href="https://api.whatsapp.com/send?phone=8801601761564"
+href="https://apps.apple.com/us/app/muslim-bangla-quran-salat-time/id878084956"
+href="https://apps.microsoft.com/detail/9n8mjvwgghcz?hl=bn&amp;gl=BN"
+href="https://jobs.muslimbangla.com?token="
+href="https://muslimakd.com/search?token="
+href="https://muslimakd.com?token="
+href="https://muslimbangla.com"
+href="https://muslimbangla.com/assets/img/namajersomoy-logo-social-round.png"
+href="https://muslimbangla.org?token="
+href="https://muslimponno.com"
+href="https://play.google.com/store/apps/details?id=com.tos.namajtime"
+href="https://www.facebook.com/groups/375898930686355"
+href="https://www.googletagmanager.com/gtag/js?id=G-04N3Z00DHE"
+href="https://www.youtube.com/c/MuslimBanglaOfficial"
+href="tel:+8801601761564"
