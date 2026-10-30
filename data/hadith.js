@@ -183,6 +183,7 @@
         else h += '<div class="hd-bn">' + mark(r[3], set) + "</div>";
       } else if (col.hasBn === false) h += '<div class="hd-no">(এই সংকলনের বাংলা অনুবাদ ডেটায় নেই)</div>';
       else h += '<div class="hd-no">(এই হাদীসের বাংলা অনুবাদ ডেটায় নেই)</div>';
+      if (col.src) h += '<div class="hd-src">সূত্র: ' + esc(col.src) + "</div>";
       el.innerHTML = h;
       var ar = el.querySelector(".hd-ar"), bn = el.querySelector(".hd-bn");
       var long = (r[2] && r[2].length > 650) || (r[3] && r[3].length > 900);
@@ -204,7 +205,7 @@
         cp.disabled = true;
         var tr = r[3] || "";
         if (col.lang === "en" && tr) tr = "ইংরেজি অনুবাদ\n" + tr;
-        var t = col.bn + " — হাদীস নং " + r[1] + (r[5] ? " (কিতাব " + r[5] + ")" : "") + "\n" + (r[2] || "") + "\n" + tr + (r[4] ? "\n[" + r[4] + "]" : "");
+        var t = col.bn + " — হাদীস নং " + r[1] + (r[5] ? " (কিতাব " + r[5] + ")" : "") + "\n" + (r[2] || "") + "\n" + tr + (r[4] ? "\n[" + r[4] + "]" : "") + (col.src ? "\nসূত্র: " + col.src : "");
         var ok = await copyTxt(t);
         cp.textContent = ok ? "✅ কপি হয়েছে" : "কপি করা যায়নি";
         setTimeout(function () { cp.textContent = "📋 কপি"; cp.disabled = false; }, 1500);
