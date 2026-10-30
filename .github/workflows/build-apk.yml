@@ -25,6 +25,26 @@ jobs:
           npm i @capacitor/core@6 @capacitor/cli@6 @capacitor/android@6
           npx cap add android
           npx cap sync android
+      - name: Add updater, fixed signing key and version
+        run: |
+          # স্থির সাইনিং কী: একই কী দিয়ে সই করা হয়, তাই নতুন সংস্করণ আগেরটার ওপরেই ইনস্টল হয়
+          cp native/dr.keystore android/app/dr.keystore
+          D=android/app/src/main/java/com/dailyruqyah/app
+          cp native/UpdaterPlugin.java native/UpdateResultReceiver.java native/MainActivity.java $D/
+          python3 - <<'PY'
+          import re
+          g=open('android/app/build.gradle').read()
+          g=re.sub(r'versionCode \d+','versionCode '+str(100+${{ github.run_number }}),g,1)
+          g=re.sub(r'versionName "[^"]*"','versionName "1.0.${{ github.run_number }}"',g,1)
+          g=g.replace('android {','android {\n    signingConfigs {\n        fixed {\n            storeFile file("dr.keystore")\n            storePassword "dailyruqyah"\n            keyAlias "dailyruqyah"\n            keyPassword "dailyruqyah"\n        }\n    }',1)
+          g=g.replace('buildTypes {','buildTypes {\n        debug {\n            signingConfig signingConfigs.fixed\n        }',1)
+          open('android/app/build.gradle','w').write(g)
+          m=open('android/app/src/main/AndroidManifest.xml').read()
+          m=m.replace('<application','<uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />\n    <uses-permission android:name="android.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION" />\n    <application',1)
+          m=m.replace('</application>','    <receiver android:name=".UpdateResultReceiver" android:exported="false" />\n    </application>',1)
+          open('android/app/src/main/AndroidManifest.xml','w').write(m)
+          PY
+          grep -n "versionCode\|versionName\|signingConfig" android/app/build.gradle
       - name: Build debug APK
         run: cd android && chmod +x gradlew && ./gradlew assembleDebug --no-daemon
       - name: Publish APK to Releases
@@ -33,4 +53,4 @@ jobs:
         run: |
           cp android/app/build/outputs/apk/debug/app-debug.apk Daily-Ruqyah.apk
           gh release delete latest --yes --cleanup-tag 2>/dev/null || true
-          gh release create latest Daily-Ruqyah.apk --title "Daily Ruqyah APK" --notes "ডাউনলোড করে ফোনে ইনস্টল করুন।"
+          gh release create "v1.0.${{ github.run_number }}" Daily-Ruqyah.apk --title "Daily Ruqyah v1.0.${{ github.run_number }}" --notes "ডাউনলোড করে ফোনে ইনস্টল করুন। অ্যাপের ভেতর থেকেও আপডেট করা যায়।" --latest

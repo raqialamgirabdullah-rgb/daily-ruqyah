@@ -232,3 +232,17 @@ button,input,select{font-family:inherit}
 @media (min-width:700px){.dr-main{padding-top:22px}.dr-ay .rs-vt{padding:18px 22px 6px}}
 
 .dr-foot a,.dr-side-foot a{color:var(--primary)}
+
+/* ---------- অ্যাপ আপডেট ---------- */
+.dr-upd{margin:4px 18px 0}
+.dr-upd-v{font-size:13px;color:var(--text-sub);line-height:1.6}
+.dr-upd-b{display:block;width:100%;margin-top:8px;padding:11px 14px;border:0;border-radius:14px;background:var(--primary);color:#fff;font-size:14.5px;font-weight:700;cursor:pointer}
+.dr-upd-b:disabled{opacity:.65}
+.dr-upd-b.new{background:linear-gradient(135deg,#b8923a,#d8b25a);color:#2b2108}
+.dr-upd-m{margin-top:6px;font-size:12px;line-height:1.6;color:var(--text-muted)}
+.dr-ban{position:sticky;top:calc(var(--bar-h) + env(safe-area-inset-top));z-index:25;display:flex;align-items:center;gap:10px;margin:0;padding:9px 12px;background:linear-gradient(90deg,#b8923a,#d8b25a);color:#2b2108;font-size:13.5px;font-weight:700}
+.dr-ban[hidden]{display:none}
+.dr-ban span{flex:1;min-width:0}
+.dr-ban button{flex:none;border:0;border-radius:999px;padding:6px 16px;background:#073b2e;color:#f6e9c4;font-size:13px;font-weight:700;cursor:pointer}
+.dr-menu.dot{position:relative}
+.dr-menu.dot::after{content:"";position:absolute;top:8px;right:8px;width:10px;height:10px;border-radius:50%;background:#d8b25a;box-shadow:0 0 0 2px #073b2e}

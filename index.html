@@ -12,7 +12,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Daily Ruqyah">
-<link rel="stylesheet" href="style.css?v=2">
+<link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 <header class="dr-bar">
@@ -35,8 +35,15 @@
  <a class="dr-nav" href="#read/bn" data-nav="read/bn"><i>বা</i><span>কুরআন বাংলা অনুবাদ</span></a>
  <a class="dr-nav" href="#read/arbn" data-nav="read/arbn"><i class="ar">عب</i><span>আরবি ও বাংলা অনুবাদসহ</span></a>
  <a class="dr-nav" href="#read/word" data-nav="read/word"><i>⋯</i><span>শব্দে শব্দে কুরআন</span></a>
+ <div class="dr-side-sec">অ্যাপ</div>
+ <div class="dr-upd">
+  <div class="dr-upd-v" id="drVer">সংস্করণ …</div>
+  <button class="dr-upd-b" id="drUpdBtn" type="button">আপডেট খুঁজুন</button>
+  <div class="dr-upd-m" id="drUpdMsg"></div>
+ </div>
  <div class="dr-side-foot">আয়াত ও অর্থের উৎস: Tanzil, Quranic Arabic Corpus ও অন্যান্য — বিবরণ <a href="QURAN-DATA-NOTICE.md">QURAN-DATA-NOTICE.md</a>-এ। গবেষণার তথ্য, ফতোয়া বা চিকিৎসার বিকল্প নয়।</div>
 </nav>
+<div class="dr-ban" id="drBan" hidden><span id="drBanTx"></span><button type="button" id="drBanBtn">আপডেট</button></div>
 <main class="dr-main">
 <div class="rs-box" id="rsBox">
  <div class="dr-inst" id="drInst"></div>
@@ -50,7 +57,7 @@
 <div class="rs-box dr-reader" id="drReader" hidden></div>
 </main>
 <div class="dr-foot">আয়াত ও অর্থের উৎস: Tanzil, Quranic Arabic Corpus ও অন্যান্য — বিবরণ <a href="QURAN-DATA-NOTICE.md">QURAN-DATA-NOTICE.md</a>-এ। গবেষণার তথ্য, ফতোয়া বা চিকিৎসার বিকল্প নয়।</div>
-<script src="app.js?v=2"></script>
-<script src="boot.js?v=2"></script>
+<script src="app.js?v=3"></script>
+<script src="boot.js?v=3"></script>
 </body>
 </html>

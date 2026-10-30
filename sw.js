@@ -1,6 +1,6 @@
 // ডেইলি রুকিয়া — অফলাইনে অ্যাপ খোলার জন্য। আয়াতের বড় ডেটা অ্যাপ নিজেই (Cache API "rs-…") জমা রাখে, তাই এখানে শুধু অ্যাপের কাঠামো।
-const V="dr-shell-v2";
-const SHELL=["./","index.html","style.css?v=2","app.js?v=2","boot.js?v=2","manifest.webmanifest","icons/icon-192.png","icons/icon-512.png","fonts/amiri-arabic-400-normal.woff2","fonts/amiri-arabic-700-normal.woff2","data/lame.min.js?v=1"];
+const V="dr-shell-v3";
+const SHELL=["./","index.html","style.css?v=3","app.js?v=3","boot.js?v=3","manifest.webmanifest","icons/icon-192.png","icons/icon-512.png","fonts/amiri-arabic-400-normal.woff2","fonts/amiri-arabic-700-normal.woff2","data/lame.min.js?v=1"];
 self.addEventListener("install",e=>{e.waitUntil(caches.open(V).then(c=>c.addAll(SHELL)).then(()=>self.skipWaiting()))});
 self.addEventListener("activate",e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k.startsWith("dr-shell-")&&k!==V).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
 self.addEventListener("fetch",e=>{
