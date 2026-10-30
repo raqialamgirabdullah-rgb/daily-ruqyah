@@ -70,14 +70,8 @@ Fetching: https://muslimbangla.com/hadith-book/12/chapter/490?page=64
 Fetching: https://muslimbangla.com/hadith-book/12/chapter/490?page=65
 Fetching: https://muslimbangla.com/hadith-book/12/chapter/490?page=66
 Fetching: https://muslimbangla.com/hadith-book/12/chapter/490?page=67
-Total unique hadiths collected for Book 12: 1117
+Total unique hadiths collected for Book 12: 1330
 Empty bn count: 0, Empty ar count: 0, Corrupt refs: 0
-Parse failures: 207 [
-  "Expected ',' or '}' after property value in JSON at position 674",
-  "Expected ',' or '}' after property value in JSON at position 836",
-  "Expected ',' or '}' after property value in JSON at position 1467",
-  "Expected ',' or '}' after property value in JSON at position 1031",
-  "Expected ',' or '}' after property value in JSON at position 1125"
-]
-INCOMPLETE: got 1117 of ~1330 hadiths for book 12. Not saving.
-exit=2
+Parse failures: 0 []
+Saved output to out/12-adab.json
+exit=0
