@@ -19,7 +19,13 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: '20' }
       - name: Scrape
-        run: node tools/scrape-muslimbangla.js ${{ matrix.book }} out
+        run: |
+          mkdir -p out
+          set +e
+          node tools/scrape-muslimbangla.js ${{ matrix.book }} out > out/log-${{ matrix.book }}.txt 2>&1
+          echo "exit=$?" >> out/log-${{ matrix.book }}.txt
+          tail -c 3000 out/log-${{ matrix.book }}.txt
+          exit 0
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -37,9 +43,12 @@ jobs:
       - name: Commit data
         run: |
           mkdir -p data-src/muslimbangla
+          mkdir -p logs
           cp dl/*/*.json data-src/muslimbangla/ 2>/dev/null || true
+          cp dl/*/log-*.txt logs/ 2>/dev/null || true
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
-          git add data-src/muslimbangla
+          git add data-src/muslimbangla logs
           git commit -m "data: re-scraped muslimbangla books (guarded)" || echo "nothing"
+          git pull --rebase origin scrape-run || true
           git push
