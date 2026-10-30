@@ -9,3 +9,14 @@ packaging, not necessarily every text inside it. Check the upstream `References.
 - Hadith grades (Albani, Zubair Ali Zai, ...) come from the same source (Abu Dawud, Tirmidhi, Nasai, Ibn Majah, Malik only) and are translated word by word into Bengali labels.
 - Search index: `data/hadith-chunks/i/` (256 shards, word → hadith ids; files are named `*.json` but contain gzip data — the Android build strips a `.gz` extension). Word normalization is in `data/hadith-norm.js`; it must stay identical for building and searching, so rebuild the data after changing it.
 - Rebuild: sparse-clone the upstream repo's `editions/`, then `node tools/build-hadith.js <editions-dir>`.
+
+## additional books (muslimbangla.com)
+
+The additional Bengali Hadith books are collected from public pages of [muslimbangla.com](https://muslimbangla.com):
+- শামাঈলে তিরমিযী (shamail)
+- আল-আদাবুল মুফরাদ (adab)
+- মিশকাতুল মাসাবীহ (mishkat)
+- রিয়াযুস সালিহীন (riyad)
+- মুসনাদে আহমদ (ahmad)
+
+Note: অনুবাদের স্বত্ব মূল অনুবাদক/প্রকাশকের; বড় পরিসরে ব্যবহারের আগে যাচাই করুন।

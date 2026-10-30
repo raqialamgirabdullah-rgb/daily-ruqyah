@@ -10,10 +10,10 @@
 const fs = require('fs');
 const path = require('path');
 const zlib = require('zlib');
-const N = require('../hadith-norm.js');
+const N = require('../data/hadith-norm.js');
 
 const SRC = process.argv[2];
-const OUT = process.argv[3] || path.join(__dirname, '..', 'hadith-chunks');
+const OUT = process.argv[3] || path.join(__dirname, '..', 'data', 'hadith-chunks');
 if (!SRC) { console.error('ব্যবহার: node tools/build-hadith.js <editions>'); process.exit(1); }
 
 const CHUNK = 20;
@@ -67,6 +67,52 @@ for (const c of COLS) {
   meta.cols.push({ k: c.k, bn: c.bn, start, count: recs.length - start, hasBn: B.length > 0 });
   console.log(c.k, 'আরবি', A.length, 'বাংলা', B.length, 'রাখা হলো', recs.length - start);
 }
+
+/* data-src/muslimbangla/*.json ফাইল থেকে নতুন কিতাব যুক্ত করার পাইপলাইন */
+const mbDir = path.join(__dirname, '..', 'data-src', 'muslimbangla');
+if (fs.existsSync(mbDir)) {
+  const mbFiles = fs.readdirSync(mbDir).filter(f => f.endsWith('.json'));
+  const mbBooks = [];
+  for (const f of mbFiles) {
+    try {
+      const content = JSON.parse(fs.readFileSync(path.join(mbDir, f), 'utf8'));
+      if (content && content.id && Array.isArray(content.hadiths)) {
+        mbBooks.push(content);
+      }
+    } catch (e) {
+      console.warn('ত্রুটি: ' + f + ' ফাইল পড়া যায়নি:', e.message);
+    }
+  }
+  mbBooks.sort((a, b) => Number(a.id) - Number(b.id));
+
+  for (const book of mbBooks) {
+    const start = recs.length;
+    let emptyBnCount = 0;
+    for (const h of book.hadiths || []) {
+      const ar = clean(h.ar);
+      const bn = clean(h.bn);
+      if (!bn) emptyBnCount++;
+      recs.push([
+        meta.cols.length,
+        numOf(h.n),
+        ar,
+        bn,
+        "",
+        clean(h.chapter || "")
+      ]);
+    }
+    meta.cols.push({
+      k: book.k,
+      bn: book.bn,
+      start,
+      count: recs.length - start,
+      hasBn: true,
+      src: "মুসলিম বাংলা"
+    });
+    console.log(book.k + ' (ID: ' + book.id + ')', 'রাখা হলো', recs.length - start, emptyBnCount ? '(খালি বাংলা: ' + emptyBnCount + ')' : '');
+  }
+}
+
 meta.total = recs.length;
 
 fs.rmSync(OUT, { recursive: true, force: true });
