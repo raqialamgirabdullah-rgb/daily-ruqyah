@@ -1,0 +1,21 @@
+# অস্থায়ী: বাংলা-হাদিস সাইটের কাঠামো দেখার পরীক্ষামূলক রান (কাজ শেষে মুছে ফেলা হবে)
+name: probe-sites
+on:
+  push:
+    branches: [probe/**]
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Probe
+        run: |
+          UA="Mozilla/5.0 (compatible; DailyRuqyahResearch/1.0)"
+          for site in https://hadithbd.com https://www.hadithbd.com https://muslimbangla.com https://www.muslimbangla.com; do
+            echo "=================== $site"
+            code=$(curl -s -L -A "$UA" -o /tmp/home.html -w "%{http_code} %{url_effective} size=%{size_download}" --max-time 30 "$site/")
+            echo "HOME: $code"
+            echo "--- robots.txt"; curl -s -L -A "$UA" --max-time 20 "$site/robots.txt" | head -30
+            echo "--- title"; grep -o '<title>[^<]*' /tmp/home.html | head -2
+            echo "--- links (unique, first 60)"; grep -o 'href="[^"]*"' /tmp/home.html | sort -u | head -60
+          done
