@@ -4,8 +4,8 @@
    ব্যবহার: node tools/build-hadith.js <editions-ফোল্ডার> [আউটপুট-ফোল্ডার=hadith-chunks]
    আউটপুট:
      meta.json            সংকলনের তালিকা ও আইডি-পরিসর
-     t/<n>.json.gz        n-তম খণ্ড: CHUNK টি হাদিসের লেখা — [সংকলন, নম্বর, আরবি, বাংলা, মান, কিতাব]
-     i/<s>.json.gz        শব্দ-সূচি (২৫৬ ভাগ): { শব্দ: [আইডি (ডেল্টা)…] }
+     t/<n>.json        n-তম খণ্ড: CHUNK টি হাদিসের লেখা — [সংকলন, নম্বর, আরবি, বাংলা, মান, কিতাব]
+     i/<s>.json        শব্দ-সূচি (২৫৬ ভাগ): { শব্দ: [আইডি (ডেল্টা)…] }
    শব্দের রূপ hadith-norm.js থেকে — সেটি বদলালে সব নতুন করে বানাতে হবে। */
 const fs = require('fs');
 const path = require('path');
@@ -123,7 +123,7 @@ const gz = o => zlib.gzipSync(Buffer.from(JSON.stringify(o)), { level: 9, mtime:
 let tb = 0, tn = 0;
 for (let i = 0; i < recs.length; i += CHUNK) {
   const b = gz(recs.slice(i, i + CHUNK));
-  fs.writeFileSync(path.join(OUT, 't', (i / CHUNK) + '.json.gz'), b);
+  fs.writeFileSync(path.join(OUT, 't', (i / CHUNK) + '.json'), b);
   tb += b.length; tn++;
 }
 
@@ -147,7 +147,7 @@ for (const [w, l] of idx) {
 let ib = 0, imax = 0;
 sh.forEach((o, s) => {
   const b = gz(o);
-  fs.writeFileSync(path.join(OUT, 'i', s + '.json.gz'), b);
+  fs.writeFileSync(path.join(OUT, 'i', s + '.json'), b);
   ib += b.length; imax = Math.max(imax, b.length);
 });
 fs.writeFileSync(path.join(OUT, 'meta.json'), JSON.stringify(meta));
