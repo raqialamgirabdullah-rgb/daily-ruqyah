@@ -1,0 +1,45 @@
+name: Scrape muslimbangla (run)
+on:
+  push:
+    branches: [scrape-run]
+    paths: ['.github/workflows/scrape-run.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    strategy:
+      fail-fast: false
+      matrix:
+        book: [8, 12, 16]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - name: Scrape
+        run: node tools/scrape-muslimbangla.js ${{ matrix.book }} out
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: book-${{ matrix.book }}
+          path: out/
+  commit:
+    needs: scrape
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with: { path: dl }
+        continue-on-error: true
+      - name: Commit data
+        run: |
+          mkdir -p data-src/muslimbangla
+          cp dl/*/*.json data-src/muslimbangla/ 2>/dev/null || true
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add data-src/muslimbangla
+          git commit -m "data: re-scraped muslimbangla books (guarded)" || echo "nothing"
+          git push
