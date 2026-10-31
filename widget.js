@@ -238,17 +238,28 @@
       pick = target === shown ? -1 : target; pickCur = s.cur;
       render();
     });
+    // স্বয়ংক্রিয় অবস্থান: খোলার সময়, সামনে ফিরলে ও প্রতি ১০ মিনিটে ফোনের অবস্থান নেয়; ১ কিমির বেশি সরলে শহর ও নামাজের সময় নিজে বদলে যায়
+    var locBusy = false;
     function locate() {
-      if (!navigator.geolocation) return;
+      if (!navigator.geolocation || locBusy) return;
+      locBusy = true;
       navigator.geolocation.getCurrentPosition(function (p) {
-        loc = { lat: p.coords.latitude, lng: p.coords.longitude, auto: true };
-        store("drw_loc", JSON.stringify(loc));
-        render();
-      }, function () { }, { enableHighAccuracy: false, timeout: 10000, maximumAge: 3600000 });
+        locBusy = false;
+        var la = p.coords.latitude, ln = p.coords.longitude;
+        var dx = (la - loc.lat) * 111.2, dy = (ln - loc.lng) * 111.2 * Math.cos(rad(la));
+        var moved = Math.sqrt(dx * dx + dy * dy);
+        if (!loc.auto || moved > 1) {
+          loc = { lat: la, lng: ln, auto: true };
+          store("drw_loc", JSON.stringify(loc));
+          render();
+        }
+      }, function () { locBusy = false; }, { enableHighAccuracy: false, timeout: 15000, maximumAge: 30000 });
     }
     render();
+    locate();
     setInterval(render, 30000);
-    document.addEventListener("visibilitychange", function () { if (!document.hidden) render(); });
+    setInterval(locate, 10 * 60 * 1000);
+    document.addEventListener("visibilitychange", function () { if (!document.hidden) { render(); locate(); } });
   }
 
   window.DRWidget = { mount: mount, _compute: compute, _nafl: nafl, _times: times, _fmt: fmt, _banglaText: banglaText };

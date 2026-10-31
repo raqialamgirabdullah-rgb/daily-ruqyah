@@ -40,7 +40,7 @@ jobs:
           g=g.replace('buildTypes {','buildTypes {\n        debug {\n            signingConfig signingConfigs.fixed\n        }',1)
           open('android/app/build.gradle','w').write(g)
           m=open('android/app/src/main/AndroidManifest.xml').read()
-          m=m.replace('<application','<uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />\n    <uses-permission android:name="android.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION" />\n    <application',1)
+          m=m.replace('<application','<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />\n    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />\n    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />\n    <uses-permission android:name="android.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION" />\n    <application',1)
           m=m.replace('</application>','    <receiver android:name=".UpdateResultReceiver" android:exported="false" />\n    </application>',1)
           open('android/app/src/main/AndroidManifest.xml','w').write(m)
           PY
