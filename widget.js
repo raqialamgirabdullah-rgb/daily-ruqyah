@@ -248,12 +248,28 @@
         var la = p.coords.latitude, ln = p.coords.longitude;
         var dx = (la - loc.lat) * 111.2, dy = (ln - loc.lng) * 111.2 * Math.cos(rad(la));
         var moved = Math.sqrt(dx * dx + dy * dy);
-        if (!loc.auto || moved > 1) {
+        if (!loc.auto || loc.ip || moved > 1) {
           loc = { lat: la, lng: ln, auto: true };
           store("drw_loc", JSON.stringify(loc));
           render();
         }
-      }, function () { locBusy = false; }, { enableHighAccuracy: false, timeout: 15000, maximumAge: 30000 });
+      }, function () { locBusy = false; ipLocate(); }, { enableHighAccuracy: false, timeout: 15000, maximumAge: 30000 });
+    }
+    // ফোনের লোকেশন না পেলে (অনুমতি নেই/বন্ধ) এবং নেট থাকলে আইপি থেকে মোটামুটি শহর ধরে (শুধু ফলব্যাক; অফলাইনে কিছু করে না)
+    function ipLocate() {
+      if (loc.auto && !loc.ip) return;
+      if (navigator.onLine === false || !window.fetch) return;
+      var ac = window.AbortController ? new AbortController() : null;
+      var to = setTimeout(function () { if (ac) ac.abort(); }, 8000);
+      fetch("https://ipwho.is/?fields=success,latitude,longitude", ac ? { signal: ac.signal } : {}).then(function (r) { return r.json(); }).then(function (j) {
+        clearTimeout(to);
+        if (!j || !j.success || !isFinite(j.latitude) || !isFinite(j.longitude)) return;
+        var dx = (j.latitude - loc.lat) * 111.2, dy = (j.longitude - loc.lng) * 111.2 * Math.cos(rad(j.latitude));
+        if (loc.ip && Math.sqrt(dx * dx + dy * dy) <= 5) return;
+        loc = { lat: j.latitude, lng: j.longitude, auto: true, ip: true };
+        store("drw_loc", JSON.stringify(loc));
+        render();
+      }).catch(function () { clearTimeout(to); });
     }
     render();
     locate();
