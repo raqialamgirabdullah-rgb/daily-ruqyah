@@ -73,15 +73,35 @@ const mbDir = path.join(__dirname, '..', 'data-src', 'muslimbangla');
 if (fs.existsSync(mbDir)) {
   const mbFiles = fs.readdirSync(mbDir).filter(f => f.endsWith('.json'));
   const mbBooks = [];
+  const partGroups = new Map(); // id -> { total, parts: Map(i -> content) } — <id>-<k>.partIofN.json ফাইলগুলো এক কিতাব
   for (const f of mbFiles) {
     try {
       const content = JSON.parse(fs.readFileSync(path.join(mbDir, f), 'utf8'));
-      if (content && content.id && Array.isArray(content.hadiths)) {
+      if (!(content && content.id && Array.isArray(content.hadiths))) continue;
+      const pm = /\.part(\d+)of(\d+)\.json$/.exec(f);
+      if (pm) {
+        let g = partGroups.get(content.id);
+        if (!g) partGroups.set(content.id, g = { total: Number(pm[2]), parts: new Map() });
+        g.parts.set(Number(pm[1]), content);
+      } else {
         mbBooks.push(content);
       }
     } catch (e) {
       console.warn('ত্রুটি: ' + f + ' ফাইল পড়া যায়নি:', e.message);
     }
+  }
+  /* ভাগ-করা কিতাব: সব অংশ থাকতে হবে; site_id ধরে দ্বিগুণ বাদ দিয়ে হাদীস-নম্বর ক্রমে সাজানো */
+  for (const [id, g] of partGroups) {
+    for (let i = 1; i <= g.total; i++) {
+      if (!g.parts.has(i)) { console.error('ত্রুটি: কিতাব ' + id + '-এর অংশ ' + i + '/' + g.total + ' পাওয়া যায়নি'); process.exit(2); }
+    }
+    if (mbBooks.some(b => b.id === id)) { console.error('ত্রুটি: কিতাব ' + id + ' একই সাথে পূর্ণ ফাইল ও অংশ-ফাইল আকারে আছে'); process.exit(2); }
+    const first = g.parts.get(1);
+    const seen = new Map();
+    for (let i = 1; i <= g.total; i++) for (const h of g.parts.get(i).hadiths) if (!seen.has(h.site_id)) seen.set(h.site_id, h);
+    const merged = Array.from(seen.values())
+      .sort((a, b) => (typeof a.n === 'number' && typeof b.n === 'number') ? a.n - b.n : 0);
+    mbBooks.push(Object.assign({}, first, { hadiths: merged }));
   }
   mbBooks.sort((a, b) => Number(a.id) - Number(b.id));
 
