@@ -637,7 +637,7 @@ function drUpdater(){
  bb.onclick=go;
  document.addEventListener("visibilitychange",async()=>{if(document.hidden)return;
   if(pend){try{const i=await P.info();if(i.canInstall){pend=false;msg.textContent="";go();return}}catch(e){}}
-  if(Date.now()-(+lsGet("drChk","0")||0)>3*3600*1000)check(false)});
+  if(Date.now()-(+lsGet("drChk","0")||0)>60*1000)check(false)});
  check(false)}
 drUpdater();
 })();
