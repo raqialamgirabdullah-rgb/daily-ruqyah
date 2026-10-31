@@ -332,7 +332,8 @@ async function main() {
   };
 
   const outFile = path.join(outDir, shard ? `${bookId}-${bookInfo.k}.part${shard.i}of${shard.n}.json` : `${bookId}-${bookInfo.k}.json`);
-  fs.writeFileSync(outFile, JSON.stringify(outputData, null, 2), 'utf8');
+  // ভাগ-করা (shard) আউটপুট কম্প্যাক্ট: বড় কিতাবে ফাইল ছোট রাখতে (GitHub-এর ফাইল-সীমা)
+  fs.writeFileSync(outFile, shard ? JSON.stringify(outputData) : JSON.stringify(outputData, null, 2), 'utf8');
   console.log(`Saved output to ${outFile}`);
 }
 
